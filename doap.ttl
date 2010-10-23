@@ -6,7 +6,7 @@
 :p a doap:Project;
     doap:name "Readable";
     doap:shortdesc "Makes webpages more readable";
-    doap:homepage <http://njw.me.uk/software/readable>;
+    doap:homepage <http://njw.me.uk/software/readable/>;
     doap:repository :repo;
     doap:programming-language "ECMAScript";
     doap:license <http://www.gnu.org/licenses/agpl.html>;
