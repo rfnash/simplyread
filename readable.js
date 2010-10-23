@@ -2,7 +2,6 @@
  * Readable - makes webpages more readable
  *
  * See COPYING file for copyright, license and warranty details.
- *
  */
 
 if(original === undefined) var original = false;
@@ -65,5 +64,7 @@ function readable()
 		"<div style=\"width: 38em; margin: auto; text-align: justify;\">" +
 		"<h1 style=\"text-align: center\">" + document.title + "</h1>" +
 		fresh.innerHTML + "</div>";
+
+	return 0;
 }
 readable()
