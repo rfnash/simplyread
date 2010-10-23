@@ -17,8 +17,8 @@ dist:
 	@tar -c $(NAME)-$(VERSION) | bzip2 -c > $(NAME)-$(VERSION).tar.bz2
 	@gpg -b < $(NAME)-$(VERSION).tar.bz2 > $(NAME)-$(VERSION).tar.bz2.sig
 	@rm -rf $(NAME)-$(VERSION)
-	@ln -s $(NAME)-$(VERSION).tar.bz2 latest.tar.bz2
-	@ln -s $(NAME)-$(VERSION).tar.bz2.sig latest.tar.bz2.sig
+	@ln -sf $(NAME)-$(VERSION).tar.bz2 latest.tar.bz2
+	@ln -sf $(NAME)-$(VERSION).tar.bz2.sig latest.tar.bz2.sig
 	@echo $(NAME)-$(VERSION).tar.bz2 $(NAME)-$(VERSION).tar.bz2.sig
 
 .PHONY: dist
