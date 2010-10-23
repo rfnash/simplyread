@@ -1,4 +1,2 @@
-create makefile for script.js, and web
-create readme & ttl, to combine for web
-define width at top
+create makefile rule for packaging releases
 it'd be nice to be able to run tests

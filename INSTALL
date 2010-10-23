@@ -1,24 +1,29 @@
+Readable is written in ECMAScript, and how to launch it varies a
+little depending on browser.
+
 # Uzbl
 
-To use this from uzbl, add the following line to the config file (replacing
-'s' with the key to bind to):
+To use this from uzbl, add the following line to the config file
+(replacing 's' with the key to bind to):
 
 @cbind s = script file:///path/to/readable.js
 
 
 # Surf
 
-To use it from surf, add the following to script.js:
+To use it from surf, add the following to script.js (replacing the
+keyIdentifier if you want to bind to a key other than Ctrl-S):
 
 (function() {
     document.addEventListener('keydown', keybind, false);
-	})();
+})();
 
-	if(original === undefined) var original = false;
-	function keybind(e) {
-	    if (!(e.keyIdentifier == "U+0053" && e.ctrlKey)) return 0; // ^s
-/* copy readable.js here, removing the line starting 'if(original' */
+function keybind(e) {
+    if (e.keyIdentifier == "U+0053" && e.ctrlKey) // ^s
+		readable();
 }
+/* copy readable.js here, removing the final line 'readable()' */
+
 
 # Other browsers; 'bookmarklet'
 
@@ -26,4 +31,7 @@ To use this as a 'bookmarklet', create a new bookmark with an address of:
 
 javascript:(function(){document.body.appendChild(document.createElement('script')).src='file:///path/to/readable.js';})();
 
-Note that due to browsers being afraid of mixing local and remote files this may not work for http:// addresses. If this is the case, you can either run the script from a remote location (eg your webserver), or integrate it into a browser-specific extension.
+Note that due to browsers being afraid of mixing local and remote files
+this may not work for http:// addresses. If this is the case, you can
+either run the script from a remote location (eg your webserver), or
+integrate it into a browser-specific extension.
