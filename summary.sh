@@ -33,7 +33,7 @@ roqet -q -r csv -e "$q" -D /dev/stdin < $rdf | sed '/^Result/d' \
 
 	cat <<- _EOF_
 - Project homepage: [$home]($home)
-- Code repository: [$repo]($repo)
+- Code repository: git clone $repo
 - Maintainer: [$maint]($mainthome)
 - Language: $lang
 - License: [$license]($licenseuri)
