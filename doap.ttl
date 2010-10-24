@@ -22,4 +22,5 @@
 
 :v0.1 a doap:Version;
     doap:revision "0.1";
+	doap:created "2010-10-23";
     doap:file-release <http://njw.me.uk/software/readable/readable-0.1.tar.bz2>.
