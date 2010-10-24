@@ -5,8 +5,8 @@ index.html: doap.ttl README
 	@echo making webpage
 	@cat < webheader.html > $@
 	@smu < README >> $@
-	@echo '<h3><a href="latest.tar.bz2">Download Readable</a><br />' >> $@
-	@echo '<a href="latest.tar.bz2.sig">GPG signature</a></h3>' >> $@
+	@echo '<h3><a href="$(NAME)-$(VERSION).tar.bz2">Download Readable $(VERSION)</a><br />' >> $@
+	@echo '<a href="$(NAME)-$(VERSION).tar.bz2.sig">GPG signature</a></h3>' >> $@
 	@echo '<hr />' >> $@
 	@sh summary.sh doap.ttl | smu >> $@
 	@echo '</body></html>' >> $@
