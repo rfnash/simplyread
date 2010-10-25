@@ -3,7 +3,7 @@ Readable
 
 Readable is a simple program to remove unwanted distractions from
 webpages, in order to better enjoy reading on the web. It removes
-everything but the article from the webpage, displaying it
+everything but the article from a webpage, displaying it
 simply and attractively.
 
 Running the program multiple times switches between showing the
