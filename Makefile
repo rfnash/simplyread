@@ -7,6 +7,8 @@ index.html: doap.ttl README
 	@smu < README >> $@
 	@echo '<h3><a href="$(NAME)-$(VERSION).tar.bz2">Download Readable $(VERSION)</a><br />' >> $@
 	@echo '<a href="$(NAME)-$(VERSION).tar.bz2.sig">GPG signature</a></h3>' >> $@
+	@echo '<h3><a href="$(NAME)-$(VERSION).xpi">Readable $(VERSION) for Firefox</a><br />' >> $@
+	@echo '<a href="$(NAME)-$(VERSION).xpi.sig">GPG signature</a></h3>' >> $@
 	@echo '<hr />' >> $@
 	@sh summary.sh doap.ttl | smu >> $@
 	@echo '</body></html>' >> $@
@@ -22,14 +24,16 @@ dist:
 	@echo $(NAME)-$(VERSION).tar.bz2 $(NAME)-$(VERSION).tar.bz2.sig
 
 xpi: readable.js gecko/install.rdf gecko/chrome.manifest gecko/chrome/content/readable.xul
-	rm -f readable-$(VERSION).xpi
-	mkdir -p gecko-build/chrome/content
-	cp COPYING gecko/chrome.manifest gecko-build/
-	cp gecko/chrome/content/readable.xul gecko-build/chrome/content/
-	cp readable.js gecko-build/chrome/content/readable.js
-	sed "s/VERSION/$(VERSION)/g" < gecko/install.rdf > gecko-build/install.rdf
-	cd gecko-build; zip -r ../readable-$(VERSION).xpi .
-	rm -rf gecko-build
+	@rm -rf $(NAME)-$(VERSION).xpi gecko-build
+	@mkdir -p gecko-build/chrome/content
+	@cp COPYING gecko/chrome.manifest gecko-build/
+	@cp gecko/chrome/content/readable.xul gecko-build/chrome/content/
+	@cp readable.js gecko-build/chrome/content/readable.js
+	@sed "s/VERSION/$(VERSION)/g" < gecko/install.rdf > gecko-build/install.rdf
+	@cd gecko-build; zip -r ../$(NAME)-$(VERSION).xpi . 1>/dev/null
+	@gpg -b < $(NAME)-$(VERSION).xpi > $(NAME)-$(VERSION).xpi.sig
+	@rm -rf gecko-build
+	@echo $(NAME)-$(VERSION).xpi $(NAME)-$(VERSION).xpi.sig
 
 .PHONY: dist xpi
 .SUFFIXES: ttl html
