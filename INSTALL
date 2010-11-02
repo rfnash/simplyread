@@ -8,11 +8,15 @@ To use this from uzbl, add the following line to the config file
 
 @cbind s = script file:///path/to/readable.js
 
+You'll also have to add the statement 'readable();' to the bottom of
+readable.js.
+
 
 # Surf
 
-To use it from surf, add the following to script.js (replacing the
-keyIdentifier if you want to bind to a key other than Ctrl-S):
+To use it from surf, and trigger it from a key combination, add the
+following to script.js (replacing the keyIdentifier if you want to
+bind to a key other than Ctrl-S):
 
 (function() {
     document.addEventListener('keydown', keybind, false);
@@ -22,14 +26,14 @@ function keybind(e) {
     if (e.keyIdentifier == "U+0053" && e.ctrlKey) // ^s
 		readable();
 }
-/* copy readable.js here, removing the final line 'readable()' */
+/* copy readable.js here */
 
 
 # Other browsers; 'bookmarklet'
 
 To use this as a 'bookmarklet', create a new bookmark with an address of:
 
-javascript:(function(){document.body.appendChild(document.createElement('script')).src='file:///path/to/readable.js';})();
+javascript:(function(){document.body.appendChild(document.createElement('script')).src='file:///path/to/readable.js';readable()})();
 
 Note that due to browsers being afraid of mixing local and remote files
 this may not work for http:// addresses. If this is the case, you can

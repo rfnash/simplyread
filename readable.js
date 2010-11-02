@@ -67,4 +67,3 @@ function readable()
 
 	return 0;
 }
-readable()
