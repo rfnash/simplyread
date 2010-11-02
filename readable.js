@@ -22,7 +22,7 @@ function readable()
 	
 	/* if we're running from a browser extension, rather than a page */
 	if(document == undefined)
-		var document = window.content.document;
+		document = window.content.document;
 	
 	/* if readable_original is set, then the readable version is currently active,
 	 * so switch to the readable_original html */
