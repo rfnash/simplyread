@@ -40,7 +40,7 @@ readable.js.
 
 To use this as a 'bookmarklet', create a new bookmark with an address of:
 
-javascript:(function(){document.body.appendChild(document.createElement('script')).src='file:///path/to/readable.js';readable()})();
+javascript:(function(){document.body.appendChild(document.createElement('script')).src='file:///path/to/readable.js';})();javascript:(function(){readable();})();
 
 Note that due to browsers being afraid of mixing local and remote files
 this may not work for http:// addresses. If this is the case, you can
