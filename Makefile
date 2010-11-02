@@ -24,7 +24,7 @@ dist:
 xpi: readable.js gecko/install.rdf gecko/chrome.manifest gecko/chrome/content/readable.xul
 	rm -f readable-$(VERSION).xpi
 	mkdir -p gecko-build/chrome/content
-	cp gecko/chrome.manifest gecko-build/
+	cp COPYING gecko/chrome.manifest gecko-build/
 	cp gecko/chrome/content/readable.xul gecko-build/chrome/content/
 	cp readable.js gecko-build/chrome/content/readable.js
 	sed "s/VERSION/$(VERSION)/g" < gecko/install.rdf > gecko-build/install.rdf
