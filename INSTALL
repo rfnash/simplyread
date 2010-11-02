@@ -1,17 +1,26 @@
 Readable is written in ECMAScript, and how to launch it varies a
 little depending on browser.
 
+# Firefox
+
+Readable is now packaged as an addon for firefox (and other browsers
+of its kin.) You can either get it from the readable web page, or
+build it by running:
+
+	make xpi
+
+
 # Surf
 
-To use it from surf, and trigger it from ctrl-alt-r, add the
+To use readable from surf, and trigger it from ctrl-alt-r, add the
 following to script.js
 
 (function() {
-    document.addEventListener('keydown', keybind, false);
+	document.addEventListener('keydown', keybind, false);
 })();
 
 function keybind(e) {
-    if (e.keyIdentifier == "U+0052" && e.ctrlKey && e.altKey) // ctrl-alt-r
+	if (e.keyIdentifier == "U+0052" && e.ctrlKey && e.altKey) // ctrl-alt-r
 		readable();
 }
 /* copy readable.js here */
@@ -19,8 +28,7 @@ function keybind(e) {
 
 # Uzbl
 
-To use this from uzbl, add the following line to the config file
-(replacing 'r' with the key to bind to):
+To use this from uzbl, add the following line to the config file:
 
 @cbind r = script file:///path/to/readable.js
 
