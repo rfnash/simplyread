@@ -4,7 +4,7 @@
  * See COPYING file for copyright, license and warranty details.
  */
 
-if(original === undefined) var original = false;
+if(document.readable_original === undefined) document.readable_original = false;
 
 function readable()
 {
@@ -20,17 +20,21 @@ function readable()
 		return n;
 	}
 	
-	/* if original is set, then the readable version is currently active,
-	 * so switch to the original html */
-	if (original) {
-		document.body.innerHTML = original;
+	/* if we're running from a browser extension, rather than a page */
+	if(document == undefined)
+		var document = window.content.document;
+	
+	/* if readable_original is set, then the readable version is currently active,
+	 * so switch to the readable_original html */
+	if (document.readable_original) {
+		document.body.innerHTML = document.readable_original;
 		for (var i = 0; i < document.styleSheets.length; i++)
 			document.styleSheets[i].disabled = false;
-		original = false
+		document.readable_original = false
 		return 0;
 	}
 	
-	original = document.body.innerHTML;
+	document.readable_original = document.body.innerHTML;
 	
 	var biggest_num = 0;
 	var biggest_tag;

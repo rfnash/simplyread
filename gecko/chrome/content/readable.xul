@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<overlay id="readable" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+	<script src="chrome://readable/content/readable.js" />
+	<keyset>
+		<key id="readable" modifiers="accel alt" key="t" oncommand="alert('hi!')" />
+		<key id="readable" modifiers="accel alt" key="r" oncommand="readable()" />
+	</keyset>
+</overlay>
