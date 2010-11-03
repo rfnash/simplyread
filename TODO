@@ -1,2 +1,3 @@
-chrome extension
+chromium extension http://code.google.com/chrome/extensions/index.html
+epiphany extension http://projects.gnome.org/epiphany/extensions
 make tests, which process sample html files and check the output

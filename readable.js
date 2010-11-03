@@ -4,7 +4,7 @@
  * See COPYING file for copyright, license and warranty details.
  */
 
-if(document.readable_original === undefined) document.readable_original = false;
+if(window.content.document.readable_original === undefined) window.content.document.readable_original = false;
 
 function readable()
 {
@@ -20,27 +20,29 @@ function readable()
 		return n;
 	}
 	
-	/* if we're running from a browser extension, rather than a page */
-	if(document == undefined)
-		document = window.content.document;
+	var doc;
+	if(document.body === undefined)
+		doc = window.content.document;
+	else
+		doc = document;
 	
 	/* if readable_original is set, then the readable version is currently active,
 	 * so switch to the readable_original html */
-	if (document.readable_original) {
-		document.body.innerHTML = document.readable_original;
-		for (var i = 0; i < document.styleSheets.length; i++)
-			document.styleSheets[i].disabled = false;
-		document.readable_original = false
+	if (doc.readable_original) {
+		doc.body.innerHTML = doc.readable_original;
+		for (var i = 0; i < doc.styleSheets.length; i++)
+			doc.styleSheets[i].disabled = false;
+		doc.readable_original = false
 		return 0;
 	}
 	
-	document.readable_original = document.body.innerHTML;
+	doc.readable_original = doc.body.innerHTML;
 	
 	var biggest_num = 0;
 	var biggest_tag;
 	
 	/* search for tag with most direct children <p> tags */
-	var t = document.getElementsByTagName("*");
+	var t = doc.getElementsByTagName("*");
 	for (var i = 0; i < t.length; i++) {
 		var p_num = count_p(t[i]);
 		if (p_num > biggest_num) {
@@ -55,18 +57,18 @@ function readable()
 	}
 	
 	/* save and sanitise content of chosen tag */
-	var fresh = document.createElement("div");
+	var fresh = doc.createElement("div");
 	fresh.innerHTML = biggest_tag.innerHTML;
 	fresh.innerHTML = fresh.innerHTML.replace(/<\/?font[^>]*>/g, "");
 	fresh.innerHTML = fresh.innerHTML.replace(/style="[^"]*"/g, "");
 	fresh.innerHTML = fresh.innerHTML.replace(/<\/?a[^>]*>/g, "");
 	
-	for (var i = 0; i < document.styleSheets.length; i++)
-		document.styleSheets[i].disabled = true;
+	for (var i = 0; i < doc.styleSheets.length; i++)
+		doc.styleSheets[i].disabled = true;
 	
-	document.body.innerHTML =
+	doc.body.innerHTML =
 		"<div style=\"width: 38em; margin: auto; text-align: justify;\">" +
-		"<h1 style=\"text-align: center\">" + document.title + "</h1>" +
+		"<h1 style=\"text-align: center\">" + doc.title + "</h1>" +
 		fresh.innerHTML + "</div>";
 
 	return 0;
