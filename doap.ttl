@@ -4,23 +4,29 @@
 @prefix :     <http://njw.me.uk/software/readable/#>.
 
 :p a doap:Project;
-    doap:name "Readable";
-    doap:shortdesc "Makes webpages more readable";
-    doap:homepage <http://njw.me.uk/software/readable/>;
-    doap:repository :repo;
-    doap:programming-language "ECMAScript";
-    doap:license <http://www.gnu.org/licenses/agpl.html>;
-    doap:release :v0.1;
-    doap:maintainer <http://njw.me.uk/card#i>.
+	doap:name "Readable";
+	doap:shortdesc "Makes webpages more readable";
+	doap:homepage <http://njw.me.uk/software/readable/>;
+	doap:repository :repo;
+	doap:programming-language "ECMAScript";
+	doap:license <http://www.gnu.org/licenses/agpl.html>;
+	doap:release :v0.1, :v0.2;
+	doap:maintainer <http://njw.me.uk/card#i>.
 
 <http://njw.me.uk/card#i> a foaf:Person;
 	foaf:name "Nick White";
 	foaf:homepage <http://njw.me.uk>.
 
 :repo a doap:GitRepository;
-    doap:location <http://git.njw.me.uk/readable.git>.
+	doap:location <http://git.njw.me.uk/readable.git>.
 
 :v0.1 a doap:Version;
-    doap:revision "0.1";
+	doap:revision "0.1";
 	doap:created "2010-10-23";
-    doap:file-release <http://njw.me.uk/software/readable/readable-0.1.tar.bz2>.
+	doap:file-release <http://njw.me.uk/software/readable/readable-0.1.tar.bz2>.
+
+:v0.2 a doap:Version;
+	doap:revision "0.2";
+	doap:created "2010-11-04";
+	doap:file-release <http://njw.me.uk/software/readable/readable-0.2.tar.bz2>,
+	                  <http://njw.me.uk/software/readable/readable-0.2.xpi>.
