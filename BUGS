@@ -1,3 +1,9 @@
+With Gecko styles aren't reliably cleared. Example
+http://www.guardian.co.uk/commentisfree/2010/oct/30/google-polluting-internet
+screws up paragraph spacing (too close together), and
+http://njw.me.uk/pubs/2010-copyme changes to serif.
+Seems to be fine with webkit.
+
 When run as a bookmarklet in firefox, the first run it hasn't registered
 readable() by the time it is called. Subsequent runs work fine. This
 occurs whether readable is in a separate javascript: clause or not.
