@@ -67,7 +67,7 @@ function readable()
 		doc.styleSheets[i].disabled = true;
 	
 	doc.body.innerHTML =
-		"<div style=\"width: 38em; margin: auto; text-align: justify;\">" +
+		"<div style=\"width:38em; margin:auto; text-align:justify; font-family:sans;\">" +
 		"<h1 style=\"text-align: center\">" + doc.title + "</h1>" +
 		fresh.innerHTML + "</div>";
 
