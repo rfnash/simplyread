@@ -10,6 +10,15 @@ build it by running:
 	make xpi
 
 
+# Chromium
+
+Readable also exists as an extension for chromium (and derived browsers.)
+It isn't currently available on the "extensions gallery," but if someone
+wants to post it there, please go ahead. For now you can get it from the
+readable web page, or by running:
+
+	make crx
+
 # Surf
 
 To use readable from surf, and trigger it from ctrl-alt-r, add the

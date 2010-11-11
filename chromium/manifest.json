@@ -1,0 +1,8 @@
+{
+	"name": "Readable",
+	"version": "VERSION",
+	"background_page": "background.html",
+	"permissions": [ "tabs", "*://*/*" ],
+	"content_scripts": [{"matches": ["*://*/*"], "js": ["readable.js"]}],
+	"browser_action": { "default_icon": "icon.png" }
+}

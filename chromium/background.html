@@ -1,0 +1,5 @@
+<html><head><script src="readable.js"></script><script>
+	chrome.browserAction.onClicked.addListener(function(tab) {
+		chrome.tabs.executeScript(null, {code:"readable();"});
+	});
+</script></head></html>

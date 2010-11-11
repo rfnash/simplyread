@@ -4,7 +4,7 @@
  * See COPYING file for copyright, license and warranty details.
  */
 
-if(window.content.document.readable_original === undefined) window.content.document.readable_original = false;
+if(window.content && window.content.document.readable_original === undefined) window.content.document.readable_original = false;
 
 function readable()
 {

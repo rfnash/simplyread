@@ -35,5 +35,16 @@ xpi: readable.js gecko/install.rdf gecko/chrome.manifest gecko/chrome/content/re
 	@rm -rf gecko-build
 	@echo $(NAME)-$(VERSION).xpi $(NAME)-$(VERSION).xpi.sig
 
-.PHONY: dist xpi
+crx: readable.js chromium/icon.png chromium/manifest.json chromium/background.html
+	@rm -rf chromium-build
+	@mkdir chromium-build
+	@cp COPYING readable.js chromium/icon.png chromium/background.html chromium-build/
+	@sed "s/VERSION/$(VERSION)/g" < chromium/manifest.json > chromium-build/manifest.json
+	@chromium-browser --pack-extension=chromium-build
+	@mv chromium-build.crx $(NAME)-$(VERSION).crx
+	@rm -r chromium-build chromium-build.pem
+	@gpg -b < $(NAME)-$(VERSION).crx > $(NAME)-$(VERSION).crx.sig
+	@echo $(NAME)-$(VERSION).crx $(NAME)-$(VERSION).crx.sig
+
+.PHONY: dist xpi crx
 .SUFFIXES: ttl html
