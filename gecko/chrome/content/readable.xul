@@ -4,4 +4,7 @@
 	<keyset>
 		<key id="readable" modifiers="accel alt" key="r" oncommand="readable()" />
 	</keyset>
+	<statusbar id="status-bar">
+		<image id="readable-icon" src="chrome://readable/content/icon.png" onclick="readable()" />
+	</statusbar>
 </overlay>

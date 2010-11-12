@@ -19,7 +19,7 @@
 		</em:targetApplication>
 		
 		<em:name>Readable</em:name>
-		<em:description>Makes webpages more readable. Press Ctrl-Alt-r to toggle readable.</em:description>
+		<em:description>Makes webpages more readable. Press Ctrl-Alt-r or click the 'r' icon in the status bar to toggle readable.</em:description>
 		<em:creator>Nick White</em:creator>
 		<em:homepageURL>http://njw.me.uk/software/readable/</em:homepageURL>
 		<doap:license rdf:resource="http://www.gnu.org/licenses/agpl.html"/>

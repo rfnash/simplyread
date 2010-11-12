@@ -23,11 +23,11 @@ dist:
 	@ln -sf $(NAME)-$(VERSION).tar.bz2.sig latest.tar.bz2.sig
 	@echo $(NAME)-$(VERSION).tar.bz2 $(NAME)-$(VERSION).tar.bz2.sig
 
-xpi: readable.js gecko/install.rdf gecko/chrome.manifest gecko/chrome/content/readable.xul
+xpi: readable.js gecko/install.rdf gecko/chrome.manifest gecko/chrome/content/readable.xul gecko/chrome/content/icon.png
 	@rm -rf $(NAME)-$(VERSION).xpi gecko-build
 	@mkdir -p gecko-build/chrome/content
 	@cp COPYING gecko/chrome.manifest gecko-build/
-	@cp gecko/chrome/content/readable.xul gecko-build/chrome/content/
+	@cp gecko/chrome/content/readable.xul gecko/chrome/content/icon.png gecko-build/chrome/content/
 	@cp readable.js gecko-build/chrome/content/readable.js
 	@sed "s/VERSION/$(VERSION)/g" < gecko/install.rdf > gecko-build/install.rdf
 	@cd gecko-build; zip -r ../$(NAME)-$(VERSION).xpi . 1>/dev/null
