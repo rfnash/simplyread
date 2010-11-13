@@ -19,7 +19,7 @@
 		</em:targetApplication>
 		
 		<em:name>SimplyRead</em:name>
-		<em:description>Makes webpages more readable. Press Ctrl-Alt-r or click the 'r' icon in the status bar to toggle SimplyRead.</em:description>
+		<em:description>Makes webpages more readable. Press Ctrl-Alt-r or click the 'sr' icon in the status bar to toggle SimplyRead.</em:description>
 		<em:creator>Nick White</em:creator>
 		<em:homepageURL>http://njw.me.uk/software/simplyread/</em:homepageURL>
 		<doap:license rdf:resource="http://www.gnu.org/licenses/agpl.html"/>
