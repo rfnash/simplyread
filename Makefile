@@ -12,7 +12,7 @@ index.html: doap.ttl README webheader.html
 	@echo '<h3><a href="$(NAME)-$(VERSION).crx">SimplyRead $(VERSION) for Chromium</a><br />' >> $@
 	@echo '<a href="$(NAME)-$(VERSION).xpi.crx">GPG signature</a></h3>' >> $@
 	@echo '<hr />' >> $@
-	@sh summary.sh doap.ttl | smu >> $@
+	@sh websummary.sh doap.ttl | smu >> $@
 	@echo '</body></html>' >> $@
 
 dist:
