@@ -1,5 +1,5 @@
 NAME = simplyread
-VERSION = 0.2
+VERSION = 0.3
 
 index.html: doap.ttl README webheader.html
 	@echo making webpage
@@ -21,8 +21,6 @@ dist:
 	@tar -c $(NAME)-$(VERSION) | bzip2 -c > $(NAME)-$(VERSION).tar.bz2
 	@gpg -b < $(NAME)-$(VERSION).tar.bz2 > $(NAME)-$(VERSION).tar.bz2.sig
 	@rm -rf $(NAME)-$(VERSION)
-	@ln -sf $(NAME)-$(VERSION).tar.bz2 latest.tar.bz2
-	@ln -sf $(NAME)-$(VERSION).tar.bz2.sig latest.tar.bz2.sig
 	@echo $(NAME)-$(VERSION).tar.bz2 $(NAME)-$(VERSION).tar.bz2.sig
 
 xpi: simplyread.js gecko/install.rdf gecko/chrome.manifest gecko/chrome/content/simplyread.xul gecko/chrome/content/icon.svg
