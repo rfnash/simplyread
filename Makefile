@@ -42,9 +42,8 @@ crx: simplyread.js chromium/icon.svg chromium/manifest.json chromium/background.
 	@cp COPYING simplyread.js chromium/background.html chromium-build/
 	@rsvg chromium/icon.svg chromium-build/icon.png
 	@sed "s/VERSION/$(VERSION)/g" < chromium/manifest.json > chromium-build/manifest.json
-	@chromium-browser --pack-extension=chromium-build
-	@mv chromium-build.crx $(NAME)-$(VERSION).crx
-	@rm -r chromium-build chromium-build.pem
+	@sh chromium/makecrx.sh chromium-build chromium/private.pem > $(NAME)-$(VERSION).crx
+	@rm -r chromium-build
 	@gpg -b < $(NAME)-$(VERSION).crx > $(NAME)-$(VERSION).crx.sig
 	@echo $(NAME)-$(VERSION).crx $(NAME)-$(VERSION).crx.sig
 

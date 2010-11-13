@@ -1,6 +1,2 @@
-chromium extension http://code.google.com/chrome/extensions/index.html
-	use a simple script to create crx rather than chromium-browser
-		http://code.google.com/chrome/extensions/crx.html
-	is the script src=simplyread in background.html necessary?
-	handle signing extension properly
+chromium: is the script src=simplyread in background.html necessary?
 make tests, which process sample html files and check the output
