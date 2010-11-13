@@ -7,4 +7,7 @@
 	<statusbar id="status-bar">
 		<image id="simplyread-icon" src="chrome://simplyread/content/icon.png" onclick="simplyread()" />
 	</statusbar>
+	<statusbar id="addon-bar"><!-- gecko 2+ -->
+		<image id="simplyread-icon" src="chrome://simplyread/content/icon.png" onclick="simplyread()" />
+	</statusbar>
 </overlay>
