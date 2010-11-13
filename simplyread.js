@@ -1,12 +1,12 @@
 /*
- * Readable - makes webpages more readable
+ * SimplyRead - makes webpages more simplyread
  *
  * See COPYING file for copyright, license and warranty details.
  */
 
-if(window.content && window.content.document.readable_original === undefined) window.content.document.readable_original = false;
+if(window.content && window.content.document.simplyread_original === undefined) window.content.document.simplyread_original = false;
 
-function readable()
+function simplyread()
 {
 	/* count the number of <p> tags that are direct children of parenttag */
 	function count_p(parenttag)
@@ -26,17 +26,17 @@ function readable()
 	else
 		doc = document;
 	
-	/* if readable_original is set, then the readable version is currently active,
-	 * so switch to the readable_original html */
-	if (doc.readable_original) {
-		doc.body.innerHTML = doc.readable_original;
+	/* if simplyread_original is set, then the simplyread version is currently active,
+	 * so switch to the simplyread_original html */
+	if (doc.simplyread_original) {
+		doc.body.innerHTML = doc.simplyread_original;
 		for (var i = 0; i < doc.styleSheets.length; i++)
 			doc.styleSheets[i].disabled = false;
-		doc.readable_original = false
+		doc.simplyread_original = false
 		return 0;
 	}
 	
-	doc.readable_original = doc.body.innerHTML;
+	doc.simplyread_original = doc.body.innerHTML;
 	
 	var biggest_num = 0;
 	var biggest_tag;

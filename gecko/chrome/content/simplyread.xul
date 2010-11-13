@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<overlay id="simplyread" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+	<script src="chrome://simplyread/content/simplyread.js" />
+	<keyset>
+		<key id="simplyread" modifiers="accel alt" key="r" oncommand="simplyread()" />
+	</keyset>
+	<statusbar id="status-bar">
+		<image id="simplyread-icon" src="chrome://simplyread/content/icon.png" onclick="simplyread()" />
+	</statusbar>
+</overlay>

@@ -1,13 +1,13 @@
-Readable
-========
+SimplyRead
+==========
 
-Readable is a simple program to remove unwanted distractions from
-webpages, in order to better enjoy reading on the web. It removes
-everything but the article from a webpage, displaying it
+SimplyRead is a simple program to remove unwanted distractions
+from webpages, in order to better enjoy reading on the web. It
+removes everything but the article from a webpage, displaying it
 simply and attractively.
 
 Running the program multiple times switches between showing the
-original page and the 'readable' version.
+original page and the simple version.
 
 This project is technically inspired by Arc90's Readability,
 but aims to be much simpler, faster, and more usable. More

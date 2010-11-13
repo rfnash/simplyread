@@ -1,2 +1,2 @@
-content readable chrome/content/
-overlay chrome://browser/content/browser.xul chrome://readable/content/readable.xul
+content simplyread chrome/content/
+overlay chrome://browser/content/browser.xul chrome://simplyread/content/simplyread.xul

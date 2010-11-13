@@ -1,10 +1,10 @@
-rename as there's already a similar program called readable. simply read seems good
 chromium extension http://code.google.com/chrome/extensions/index.html
 	packaging
 		http://code.google.com/chrome/extensions/packaging.html
 		http://code.google.com/chrome/extensions/hosting.html
 		http://code.google.com/chrome/extensions/crx.html
 	use a simple script to create crx rather than chromium-browser
+	is the script src=simplyread in background.html necessary?
 	handle signing extension properly
 epiphany extension http://projects.gnome.org/epiphany/extensions
 make tests, which process sample html files and check the output
