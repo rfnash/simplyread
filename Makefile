@@ -25,22 +25,24 @@ dist:
 	@ln -sf $(NAME)-$(VERSION).tar.bz2.sig latest.tar.bz2.sig
 	@echo $(NAME)-$(VERSION).tar.bz2 $(NAME)-$(VERSION).tar.bz2.sig
 
-xpi: readable.js gecko/install.rdf gecko/chrome.manifest gecko/chrome/content/readable.xul gecko/chrome/content/icon.png
+xpi: readable.js gecko/install.rdf gecko/chrome.manifest gecko/chrome/content/readable.xul gecko/chrome/content/icon.svg
 	@rm -rf $(NAME)-$(VERSION).xpi gecko-build
 	@mkdir -p gecko-build/chrome/content
 	@cp COPYING gecko/chrome.manifest gecko-build/
-	@cp gecko/chrome/content/readable.xul gecko/chrome/content/icon.png gecko-build/chrome/content/
+	@cp gecko/chrome/content/readable.xul gecko-build/chrome/content/
 	@cp readable.js gecko-build/chrome/content/readable.js
+	@rsvg gecko/chrome/content/icon.svg gecko-build/chrome/content/icon.png
 	@sed "s/VERSION/$(VERSION)/g" < gecko/install.rdf > gecko-build/install.rdf
 	@cd gecko-build; zip -r ../$(NAME)-$(VERSION).xpi . 1>/dev/null
 	@gpg -b < $(NAME)-$(VERSION).xpi > $(NAME)-$(VERSION).xpi.sig
 	@rm -rf gecko-build
 	@echo $(NAME)-$(VERSION).xpi $(NAME)-$(VERSION).xpi.sig
 
-crx: readable.js chromium/icon.png chromium/manifest.json chromium/background.html
+crx: readable.js chromium/icon.svg chromium/manifest.json chromium/background.html
 	@rm -rf chromium-build
 	@mkdir chromium-build
-	@cp COPYING readable.js chromium/icon.png chromium/background.html chromium-build/
+	@cp COPYING readable.js chromium/background.html chromium-build/
+	@rsvg chromium/icon.svg chromium-build/icon.png
 	@sed "s/VERSION/$(VERSION)/g" < chromium/manifest.json > chromium-build/manifest.json
 	@chromium-browser --pack-extension=chromium-build
 	@mv chromium-build.crx $(NAME)-$(VERSION).crx
@@ -49,4 +51,4 @@ crx: readable.js chromium/icon.png chromium/manifest.json chromium/background.ht
 	@echo $(NAME)-$(VERSION).crx $(NAME)-$(VERSION).crx.sig
 
 .PHONY: dist xpi crx
-.SUFFIXES: ttl html
+.SUFFIXES: ttl html png svg
