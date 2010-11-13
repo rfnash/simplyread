@@ -9,9 +9,6 @@ simply and attractively.
 Running the program multiple times switches between showing the
 original page and the 'readable' version.
 
-Read the file INSTALL for information on installing it into your
-browser.
-
 This project is technically inspired by Arc90's Readability,
 but aims to be much simpler, faster, and more usable. More
 generally, it is inspired by Sean Birketts' *The Gutenberg

@@ -1,7 +1,7 @@
 NAME = readable
 VERSION = 0.2
 
-index.html: doap.ttl README
+index.html: doap.ttl README webheader.html
 	@echo making webpage
 	@cat < webheader.html > $@
 	@smu < README >> $@
@@ -9,6 +9,8 @@ index.html: doap.ttl README
 	@echo '<a href="$(NAME)-$(VERSION).tar.bz2.sig">GPG signature</a></h3>' >> $@
 	@echo '<h3><a href="$(NAME)-$(VERSION).xpi">Readable $(VERSION) for Firefox</a><br />' >> $@
 	@echo '<a href="$(NAME)-$(VERSION).xpi.sig">GPG signature</a></h3>' >> $@
+	@echo '<h3><a href="$(NAME)-$(VERSION).crx">Readable $(VERSION) for Chromium</a><br />' >> $@
+	@echo '<a href="$(NAME)-$(VERSION).xpi.crx">GPG signature</a></h3>' >> $@
 	@echo '<hr />' >> $@
 	@sh summary.sh doap.ttl | smu >> $@
 	@echo '</body></html>' >> $@
