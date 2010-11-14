@@ -1,5 +1,2 @@
 chromium: is the script src=simplyread in background.html necessary?
-look into signing gecko extension as prefered by mozilla
-	https://developer.mozilla.org/en/Signing_a_XPI
-	https://developer.mozilla.org/en/Signing_an_extension
 make tests, which process sample html files and check the output
