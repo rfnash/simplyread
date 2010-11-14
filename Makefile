@@ -47,10 +47,12 @@ crx: simplyread.js chromium/icon.svg chromium/manifest.json chromium/background.
 	gpg -b < $(NAME)-$(VERSION).crx > $(NAME)-$(VERSION).crx.sig
 	echo $(NAME)-$(VERSION).crx $(NAME)-$(VERSION).crx.sig
 
+# note that tests require a patched surf browser; see tests/runtest.sh
 test:
 	for i in tests/html/*.html; do \
-		sh tests/runtest.sh $$i $$i.simple 1>$$i.diff 2>/dev/null; \
-		test $$? -eq 0 && echo $$i passed || echo "$$i failed (see $$i.diff)"; \
+		sh tests/webkittest.sh $$i $$i.simple 1>$$i.diff 2>/dev/null; \
+		test $$? -eq 0 && echo "$$i passed (webkit)" \
+			|| echo "$$i failed (webkit) (see $$i.diff)"; \
 		test ! -s $$i.diff && rm $$i.diff; \
 	done
 
