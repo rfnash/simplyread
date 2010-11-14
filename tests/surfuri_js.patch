@@ -1,0 +1,19 @@
+diff -r a62107a88a10 surf.c
+--- a/surf.c	Sun Aug 08 17:32:38 2010 +0100
++++ b/surf.c	Sun Nov 14 21:28:00 2010 +0000
+@@ -464,6 +464,15 @@
+ 
+ 	if(strcmp(uri, "") == 0)
+ 		return;
++	if(g_strrstr(uri, "javascript:")) {
++		JSStringRef jsscript;
++		JSValueRef exception = NULL;
++		jsscript = JSStringCreateWithUTF8CString(g_strdup(uri));
++		WebKitWebFrame* frame = webkit_web_view_get_main_frame(c->view);
++		JSContextRef js = webkit_web_frame_get_global_context(frame);
++		JSEvaluateScript(js, jsscript, JSContextGetGlobalObject(js), NULL, 0, &exception);
++		return;
++	}
+ 	u = g_strrstr(uri, "://") ? g_strdup(uri)
+ 		: g_strdup_printf("http://%s", uri);
+ 	/* prevents endless loop */
