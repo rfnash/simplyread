@@ -6,8 +6,12 @@ from webpages, in order to better enjoy reading on the web. It
 removes everything but the article from a webpage, displaying it
 simply and attractively.
 
-Running the program multiple times switches between showing the
-original page and the simple version.
+The program is packaged as an extension for several web
+browsers, or as a standalone ECMAScript program to integrate
+into other browsers. Read the INSTALL file for details.
+
+Running it multiple times switches between showing the original
+page and the simple version.
 
 This project is technically inspired by Arc90's Readability,
 but aims to be much simpler, faster, and more usable. More
