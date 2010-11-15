@@ -17,18 +17,18 @@ index.html: doap.ttl README webheader.html
 
 dist:
 	mkdir -p $(NAME)-$(VERSION)
-	cp simplyread.js COPYING INSTALL README $(NAME)-$(VERSION)
+	cp simplyread.js keybind.js COPYING INSTALL README $(NAME)-$(VERSION)
 	tar -c $(NAME)-$(VERSION) | bzip2 -c > $(NAME)-$(VERSION).tar.bz2
 	gpg -b < $(NAME)-$(VERSION).tar.bz2 > $(NAME)-$(VERSION).tar.bz2.sig
 	rm -rf $(NAME)-$(VERSION)
 	echo $(NAME)-$(VERSION).tar.bz2 $(NAME)-$(VERSION).tar.bz2.sig
 
-xpi: simplyread.js gecko/install.rdf gecko/chrome.manifest gecko/chrome/content/simplyread.xul gecko/chrome/content/icon.svg
+xpi:
 	rm -rf $(NAME)-$(VERSION).xpi gecko-build
 	mkdir -p gecko-build/chrome/content
 	cp COPYING gecko/chrome.manifest gecko-build/
 	cp gecko/chrome/content/simplyread.xul gecko-build/chrome/content/
-	cp simplyread.js gecko-build/chrome/content/simplyread.js
+	cp simplyread.js gecko-build/chrome/content/
 	rsvg gecko/chrome/content/icon.svg gecko-build/chrome/content/icon.png
 	sed "s/VERSION/$(VERSION)/g" < gecko/install.rdf > gecko-build/install.rdf
 	cd gecko-build; zip -r ../$(NAME)-$(VERSION).xpi . 1>/dev/null
@@ -36,10 +36,10 @@ xpi: simplyread.js gecko/install.rdf gecko/chrome.manifest gecko/chrome/content/
 	rm -rf gecko-build
 	echo $(NAME)-$(VERSION).xpi $(NAME)-$(VERSION).xpi.sig
 
-crx: simplyread.js chromium/icon.svg chromium/manifest.json chromium/background.html
+crx:
 	rm -rf chromium-build
 	mkdir chromium-build
-	cp COPYING simplyread.js chromium/background.html chromium-build/
+	cp COPYING simplyread.js keybind.js chromium/background.html chromium-build/
 	rsvg chromium/icon.svg chromium-build/icon.png
 	sed "s/VERSION/$(VERSION)/g" < chromium/manifest.json > chromium-build/manifest.json
 	sh chromium/makecrx.sh chromium-build chromium/private.pem > $(NAME)-$(VERSION).crx

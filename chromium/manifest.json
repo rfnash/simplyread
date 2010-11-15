@@ -3,6 +3,6 @@
 	"version": "VERSION",
 	"background_page": "background.html",
 	"permissions": [ "tabs", "*://*/*" ],
-	"content_scripts": [{"matches": ["*://*/*"], "js": ["simplyread.js"]}],
+	"content_scripts": [{"matches": ["*://*/*"], "js": ["simplyread.js", "keybind.js"]}],
 	"browser_action": { "default_icon": "icon.png" }
 }

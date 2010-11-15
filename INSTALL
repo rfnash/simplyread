@@ -9,7 +9,6 @@ page, or build it by running:
 
 	make xpi
 
-
 # Chromium
 
 SimplyRead also exists as an extension for chromium (and derived
@@ -22,18 +21,9 @@ you can get it from the SimplyRead web page, or by running:
 # Surf
 
 To use SimplyRead from surf, and trigger it from ctrl-alt-r, add the
-following to script.js
+contents of keybind.js and simplyread.js to script.js:
 
-(function() {
-	document.addEventListener('keydown', keybind, false);
-})();
-
-function keybind(e) {
-	if (e.keyIdentifier == "U+0052" && e.ctrlKey && e.altKey) // ctrl-alt-r
-		simplyread();
-}
-/* copy simplyread.js here */
-
+	cat keybind.js simplyread.js >> $HOME/.surf/script.js
 
 # Uzbl
 
@@ -43,7 +33,6 @@ To use this from uzbl, add the following line to the config file:
 
 You'll also have to add the statement 'simplyread();' to the bottom of
 simplyread.js.
-
 
 # Other browsers; 'bookmarklet'
 
