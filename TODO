@@ -1,4 +1,3 @@
-chromium: is the script src=simplyread in background.html necessary?
 add ctrl-alt-r to chromium extension
 	http://code.google.com/chrome/extensions/events.html
 make tests for chromium and firefox engines
