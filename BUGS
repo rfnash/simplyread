@@ -5,7 +5,3 @@ Seems to be fine with webkit.
 The issue is that for some reason on first run not all stylesheets
 are disabled in firefox. Subsequent runs are fine. Presumably it's a
 bug in firefox; should report it to them.
-
-When run as a bookmarklet in firefox, the first run it hasn't registered
-simplyread() by the time it is called. Subsequent runs work fine. This
-occurs whether simplyread is in a separate javascript: clause or not.
