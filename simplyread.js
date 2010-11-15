@@ -1,5 +1,5 @@
 /*
- * SimplyRead - makes webpages more simplyread
+ * SimplyRead - makes webpages more readable
  *
  * See COPYING file for copyright, license and warranty details.
  */
