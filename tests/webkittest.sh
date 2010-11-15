@@ -7,7 +7,7 @@ test $# -ne 2 && echo usage $0 testhtml expectedoutput && exit 1
 
 testjs=tests/showsimple.js
 htmlloadtime=2
-scriptloadtime=2
+scriptloadtime=3
 
 surf -x "file://./$1" > testxid 2>testoutput &
 pid=$!

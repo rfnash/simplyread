@@ -1,3 +1,6 @@
 chromium: is the script src=simplyread in background.html necessary?
 add ctrl-alt-r to chromium extension
 	http://code.google.com/chrome/extensions/events.html
+make tests for chromium and firefox engines
+	https://developer.mozilla.org/en/Automated_testing_tips_and_tricks
+find out why alert is needed to allow surf tests to complete
