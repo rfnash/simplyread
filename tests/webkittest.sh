@@ -8,6 +8,13 @@ test $# -ne 2 && echo usage $0 testhtml expectedoutput && exit 1
 testjs=tests/showsimple.js
 htmlloadtime=2
 scriptloadtime=3
+scriptjs=$HOME/.surf/script.js
+
+touch $scriptjs
+test $scriptjs && mv $scriptjs $scriptjs.real
+cp simplyread.js $scriptjs
+
+trap 'rm -f testxid testoutput testoutputbody $scriptjs;mv $scriptjs.real $scriptjs' EXIT
 
 surf -x "file://./$1" > testxid 2>testoutput &
 pid=$!
@@ -22,5 +29,4 @@ sed 's/^\*\* Message:[^<]*//g' < testoutput > testoutputbody
 diff "$2" testoutputbody
 result=$?
 
-rm -f testxid testoutput testoutputbody
 exit $result
