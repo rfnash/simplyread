@@ -10,7 +10,7 @@
 	doap:repository :repo;
 	doap:programming-language "ECMAScript";
 	doap:license <http://www.gnu.org/licenses/agpl.html>;
-	doap:release :v0.1, :v0.2, :v0.3;
+	doap:release :v0.1, :v0.2, :v0.3, :v0.4;
 	doap:maintainer <http://njw.me.uk/card#i>.
 
 <http://njw.me.uk/card#i> a foaf:Person;
@@ -37,3 +37,10 @@
 	doap:file-release <http://njw.me.uk/software/simplyread/simplyread-0.3.tar.bz2>,
 	                  <http://njw.me.uk/software/simplyread/simplyread-0.3.xpi>,
 	                  <http://njw.me.uk/software/simplyread/simplyread-0.3.crx>.
+
+:v0.4 a doap:Version;
+	doap:revision "0.4";
+	doap:created "2010-11-16";
+	doap:file-release <http://njw.me.uk/software/simplyread/simplyread-0.4.tar.bz2>,
+	                  <http://njw.me.uk/software/simplyread/simplyread-0.4.xpi>,
+	                  <http://njw.me.uk/software/simplyread/simplyread-0.4.crx>.
