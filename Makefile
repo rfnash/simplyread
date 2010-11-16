@@ -1,5 +1,5 @@
 NAME = simplyread
-VERSION = 0.3
+VERSION = 0.4
 
 index.html: doap.ttl README webheader.html
 	echo making webpage
