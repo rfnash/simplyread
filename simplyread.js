@@ -62,6 +62,7 @@ function simplyread()
 	fresh.innerHTML = fresh.innerHTML.replace(/<\/?font[^>]*>/g, "");
 	fresh.innerHTML = fresh.innerHTML.replace(/style="[^"]*"/g, "");
 	fresh.innerHTML = fresh.innerHTML.replace(/<\/?a[^>]*>/g, "");
+	fresh.innerHTML = fresh.innerHTML.replace(/<p/g, "<p style=\"margin: 1em 0em;\"");
 	
 	for (var i = 0; i < doc.styleSheets.length; i++)
 		doc.styleSheets[i].disabled = true;
