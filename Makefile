@@ -31,7 +31,7 @@ xpi:
 	cp gecko/chrome/content/simplyread.xul gecko-build/chrome/content/
 	cp simplyread.js gecko-build/chrome/content/
 	rsvg gecko/chrome/content/icon.svg gecko-build/chrome/content/icon.png
-	sed "s/VERSION/$(VERSION)/g" < gecko/install.rdf > gecko-build/install.rdf
+	sed "s/VERSION/$(VERSION)/g" < gecko/install.ttl | rapper -i turtle -o rdfxml /dev/stdin 2>/dev/null > gecko-build/install.rdf
 	cd gecko-build; zip -r ../$(NAME)-$(VERSION).xpi . 1>/dev/null
 	gpg -b < $(NAME)-$(VERSION).xpi > $(NAME)-$(VERSION).xpi.sig
 	rm -rf gecko-build
