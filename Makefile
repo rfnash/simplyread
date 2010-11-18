@@ -1,6 +1,9 @@
 NAME = simplyread
 VERSION = 0.4
 
+chromium-updates.xml: chromium/updates.xml
+	sed "s/VERSION/$(VERSION)/g" < $< > $@
+
 index.html: doap.ttl README webheader.html
 	echo making webpage
 	cat < webheader.html > $@
