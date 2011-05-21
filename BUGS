@@ -1,0 +1,8 @@
+# Chromium
+
+* page action doesn't work from icon on file:// (though from keybind it works fine
+)
+  'Error during tabs.executeScript: Cannot access contents of url "file:///hom
+e/nick/marlbo2.htm". Extension manifest must request permission to access this host.
+'
+  which is unfair, as it does (with <all_urls>). likely therefore a bug in chromium.

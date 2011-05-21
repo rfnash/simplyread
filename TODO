@@ -3,10 +3,6 @@ finish update support. this means use tool http://www.softlights.net/projects/mx
 core:
 	it would be nice to do hyphenation. http://code.google.com/p/hyphenator/ is nice, but heavyish (around 2000 LOC). most of that is just unneeded config options etc, though, the core looks reasonable; see hyphenate and hyphenateWord functions. note that it's lgpl.
 
-chromium:
-	page action doesn't work from icon on file:// (though from keybind it works fine)
-	fix makecrx.sh to work with 9base utils
-
 gecko:
 	test with firefox 4.0, and update version info
 
