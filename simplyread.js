@@ -49,10 +49,7 @@ function simplyread()
 		}
 	}
 	
-	if (biggest_num == 0) {
-		alert("Can't find any content");
-		return 1;
-	}
+	if (biggest_num == 0) return 1;
 	
 	/* save and sanitise content of chosen tag */
 	var fresh = doc.createElement("div");
