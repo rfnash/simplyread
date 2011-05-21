@@ -6,12 +6,6 @@ core:
 chromium:
 	page action doesn't work from icon on file:// (though from keybind it works fine)
 	fix makecrx.sh to work with 9base utils
-	look further into permissions; see if we can scale back
-		so we don't get warnings; after all, no network or disk
-		activity happens at all. if not, ask on a 'google group' or
-		similar (may be able to post over nntp..)
-		http://code.google.com/chrome/extensions/manifest.html
-		http://code.google.com/chrome/extensions/permission_warnings.html
 
 gecko:
 	test with firefox 4.0, and update version info
