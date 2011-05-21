@@ -1,11 +1,36 @@
-current tests
-	test the keyboard shortcut, by sending an event;
-		e=document.createEvent(...
-		e.initEvent(...
-		e.keyCode = ...
-		document.body.dispatchEvent(e)
-	window.close directly after logging to the console
+finish update support. this means use tool http://www.softlights.net/projects/mxtools/uhura.html to sign mozilla thing, and test both mozilla and chrome things actually work
 
-make tests for chromium and firefox engines
-	https://developer.mozilla.org/en/Automated_testing_tips_and_tricks
-	https://developer.mozilla.org/en/Mozmill_Tests/Addon_tests
+core:
+	it would be nice to do hyphenation. http://code.google.com/p/hyphenator/ is nice, but heavyish (around 2000 LOC). most of that is just unneeded config options etc, though, the core looks reasonable; see hyphenate and hyphenateWord functions. note that it's lgpl.
+
+chromium:
+	page action doesn't work from icon on file:// (though from keybind it works fine)
+	fix makecrx.sh to work with 9base utils
+	look further into permissions; see if we can scale back
+		so we don't get warnings; after all, no network or disk
+		activity happens at all. if not, ask on a 'google group' or
+		similar (may be able to post over nntp..)
+		http://code.google.com/chrome/extensions/manifest.html
+		http://code.google.com/chrome/extensions/permission_warnings.html
+
+gecko:
+	test with firefox 4.0, and update version info
+
+build:
+	set website from makefile variable / sed everywhere
+	build to current directory, not web
+
+web:
+	change 'download simplyread' button to 'simplyread 0.4 source'
+
+test:
+	current tests
+		test the keyboard shortcut, by sending an event;
+			e=document.createEvent(...
+			e.initEvent(...
+			e.keyCode = ...
+			document.body.dispatchEvent(e)
+		window.close directly after logging to the console
+	make tests for chromium and firefox engines
+		https://developer.mozilla.org/en/Automated_testing_tips_and_tricks
+		https://developer.mozilla.org/en/Mozmill_Tests/Addon_tests

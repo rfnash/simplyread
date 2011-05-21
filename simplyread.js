@@ -21,10 +21,8 @@ function simplyread()
 	}
 	
 	var doc;
-	if(document.body === undefined)
-		doc = window.content.document;
-	else
-		doc = document;
+	doc = (document.body === undefined)
+	      ? window.content.document : document;
 	
 	/* if simplyread_original is set, then the simplyread version is currently active,
 	 * so switch to the simplyread_original html */

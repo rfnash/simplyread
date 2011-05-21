@@ -5,6 +5,8 @@
 # Based on bash script at:
 # http://code.google.com/chrome/extensions/crx.html
 # Licensed under the BSD license
+#
+# NOTE: does not yet work perfectly with 9base tools
 
 test $# -ne 2 && echo "Usage: $0 dir pem" && exit 1
 

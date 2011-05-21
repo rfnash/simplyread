@@ -1,5 +1,7 @@
 NAME = simplyread
 VERSION = 0.4
+WEBSITE = http://njw.me.uk/software/$(NAME)/
+KEYFILE = private.pem
 
 all: web/chromium-updates.xml web/index.html dist xpi crx
 
@@ -45,10 +47,10 @@ xpi:
 crx:
 	rm -rf chromium-build
 	mkdir chromium-build
-	cp COPYING simplyread.js keybind.js chromium/background.html chromium-build/
+	cp COPYING simplyread.js keybind.js chromium/viable.js chromium/background.html chromium-build/
 	rsvg chromium/icon.svg chromium-build/icon.png
 	sed "s/VERSION/$(VERSION)/g" < chromium/manifest.json > chromium-build/manifest.json
-	sh chromium/makecrx.sh chromium-build chromium/private.pem > web/$(NAME)-$(VERSION).crx
+	sh chromium/makecrx.sh chromium-build $(KEYFILE) > web/$(NAME)-$(VERSION).crx
 	rm -r chromium-build
 	gpg -b < web/$(NAME)-$(VERSION).crx > web/$(NAME)-$(VERSION).crx.sig
 	echo web/$(NAME)-$(VERSION).crx web/$(NAME)-$(VERSION).crx.sig
