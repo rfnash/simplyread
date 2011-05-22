@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" version="1.0" width="19" height="19">
-	<circle cx="9.5" cy="9.5" r="9.5" fill="white"/>
-	<text x="3" y="15" font-size="18" font-family="sans">s</text>
-	<text x="8" y="15" font-size="18" font-family="sans">r</text>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.0" width="128" height="128">
+	<circle cx="64" cy="64" r="64" fill="white"/>
+	<text x="11" y="100" font-size="128" font-family="sans">s</text>
+	<text x="59" y="100" font-size="128" font-family="sans">r</text>
 </svg>

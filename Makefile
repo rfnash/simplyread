@@ -48,7 +48,9 @@ crx:
 	rm -rf chromium-build
 	mkdir chromium-build
 	cp COPYING simplyread.js keybind.js chromium/viable.js chromium/background.html chromium-build/
-	rsvg chromium/icon.svg chromium-build/icon.png
+	rsvg -w 19 -h 19 chromium/icon.svg chromium-build/icon.png
+	rsvg -w 48 -h 48 chromium/icon.svg chromium-build/icon48.png
+	rsvg -w 128 -h 128 chromium/icon.svg chromium-build/icon128.png
 	sed "s/VERSION/$(VERSION)/g" < chromium/manifest.json > chromium-build/manifest.json
 	sh chromium/makecrx.sh chromium-build $(KEYFILE) > web/$(NAME)-$(VERSION).crx
 	rm -r chromium-build
