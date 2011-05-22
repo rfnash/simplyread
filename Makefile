@@ -37,7 +37,7 @@ xpi:
 	cp COPYING gecko/chrome.manifest gecko-build/
 	cp gecko/chrome/content/simplyread.xul gecko-build/chrome/content/
 	cp simplyread.js gecko-build/chrome/content/
-	rsvg gecko/chrome/content/icon.svg gecko-build/chrome/content/icon.png
+	rsvg -w 22 -h 22 icon.svg gecko-build/chrome/content/icon.png
 	sed "s/VERSION/$(VERSION)/g" < gecko/install.ttl | rapper -i turtle -o rdfxml /dev/stdin 2>/dev/null > gecko-build/install.rdf
 	cd gecko-build; zip -r ../web/$(NAME)-$(VERSION).xpi . 1>/dev/null
 	gpg -b < web/$(NAME)-$(VERSION).xpi > web/$(NAME)-$(VERSION).xpi.sig
@@ -48,9 +48,9 @@ crx:
 	rm -rf chromium-build
 	mkdir chromium-build
 	cp COPYING simplyread.js keybind.js chromium/viable.js chromium/background.html chromium-build/
-	rsvg -w 19 -h 19 chromium/icon.svg chromium-build/icon.png
-	rsvg -w 48 -h 48 chromium/icon.svg chromium-build/icon48.png
-	rsvg -w 128 -h 128 chromium/icon.svg chromium-build/icon128.png
+	rsvg -w 19 -h 19 icon.svg chromium-build/icon.png
+	rsvg -w 48 -h 48 icon.svg chromium-build/icon48.png
+	rsvg -w 128 -h 128 icon.svg chromium-build/icon128.png
 	sed "s/VERSION/$(VERSION)/g" < chromium/manifest.json > chromium-build/manifest.json
 	sh chromium/makecrx.sh chromium-build $(KEYFILE) > web/$(NAME)-$(VERSION).crx
 	rm -r chromium-build
