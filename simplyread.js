@@ -64,7 +64,8 @@ function simplyread()
 	
 	doc.body.innerHTML =
 		"<div style=\"width:38em; margin:auto;" +
-		" text-align:justify; font-family:sans;\">" +
+		" text-align:justify; font-family:sans;" +
+		" text-rendering:optimizeLegibility;\">" +
 		"<h1 style=\"text-align: center\">"+doc.title+"</h1>" +
 		fresh.innerHTML + "</div>";
 
