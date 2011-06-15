@@ -63,8 +63,8 @@ function simplyread()
 		doc.styleSheets[i].disabled = true;
 	
 	doc.body.innerHTML =
-		"<div style=\"width:38em; margin:auto;" +
-		" text-align:justify; font-family:sans;" +
+		"<div style=\"width:38em; margin:auto; line-height: 1.4;" +
+		" text-align:justify; font-family:serif;" +
 		" text-rendering:optimizeLegibility; hyphens:auto;\">" +
 		"<h1 style=\"text-align: center\">"+doc.title+"</h1>" +
 		fresh.innerHTML + "</div>";
