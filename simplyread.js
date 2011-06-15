@@ -57,12 +57,13 @@ function simplyread()
 	fresh.innerHTML = fresh.innerHTML.replace(/<\/?font[^>]*>/g, "");
 	fresh.innerHTML = fresh.innerHTML.replace(/style="[^"]*"/g, "");
 	fresh.innerHTML = fresh.innerHTML.replace(/<\/?a[^>]*>/g, "");
-	fresh.innerHTML = fresh.innerHTML.replace(/<p>/g, "<p style=\"margin:1em 0em\">");
 	
 	for (var i = 0; i < doc.styleSheets.length; i++)
 		doc.styleSheets[i].disabled = true;
 	
 	doc.body.innerHTML =
+		"<style type=\"text/css\">" +
+		" p{margin:0ex auto;} p+p{text-indent:2em;}</style>"
 		"<div style=\"width:38em; margin:auto; line-height: 1.4;" +
 		" text-align:justify; font-family:serif;" +
 		" text-rendering:optimizeLegibility; hyphens:auto;\">" +
