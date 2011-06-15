@@ -5,7 +5,7 @@
 
 :p a doap:Project;
 	doap:name "SimplyRead";
-	doap:shortdesc "Makes webpages more readable";
+	doap:shortdesc "Stop browsing, start reading";
 	doap:homepage <http://njw.me.uk/software/simplyread/>;
 	doap:repository :repo;
 	doap:programming-language "ECMAScript";

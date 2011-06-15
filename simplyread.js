@@ -1,5 +1,5 @@
 /*
- * SimplyRead - makes webpages more readable
+ * SimplyRead - Stop browsing, start reading
  *
  * See COPYING file for copyright, license and warranty details.
  */
@@ -62,12 +62,15 @@ function simplyread()
 		doc.styleSheets[i].disabled = true;
 	
 	doc.body.innerHTML =
-		"<style type=\"text/css\">" +
-		" p{margin:0ex auto;} p+p{text-indent:2em;}</style>"
-		"<div style=\"width:38em; margin:auto; line-height: 1.4;" +
+		"<style type=\"text/css\"> p{margin:0ex auto;}" +
+		" p+p{text-indent:2em;} body {background-color:#cccccc}" +
+		" h1,h2,h3,h4 {font-weight:normal}</style>" +
+		"<div style=\"width:34em; padding:8em; padding-top:2em;" +
+		" background-color:white; margin:auto; line-height:1.4;" +
 		" text-align:justify; font-family:serif;" +
 		" text-rendering:optimizeLegibility; hyphens:auto;\">" +
-		"<h1 style=\"text-align: center\">"+doc.title+"</h1>" +
+		"<h1 style=\"text-align:center;text-transform:uppercase\">"+doc.title+"</h1>" +
+		"<hr style=\"width:6em; margin-top:2ex auto;\"/>" +
 		fresh.innerHTML + "</div>";
 
 	return 0;

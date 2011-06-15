@@ -1,8 +1,4 @@
-/*
- * SimplyRead - makes webpages more readable
- *
- * See COPYING file for copyright, license and warranty details.
- */
+/* See COPYING file for copyright, license and warranty details. */
 
 function viable() {
 	var doc;
