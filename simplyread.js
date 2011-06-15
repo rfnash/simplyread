@@ -64,6 +64,7 @@ function simplyread()
 	doc.body.innerHTML =
 		"<style type=\"text/css\"> p{margin:0ex auto;}" +
 		" p+p{text-indent:2em;} body {background-color:#cccccc}" +
+		" img{float:right; padding-left:1em;}" +
 		" h1,h2,h3,h4 {font-weight:normal}</style>" +
 		"<div style=\"width:34em; padding:8em; padding-top:2em;" +
 		" background-color:white; margin:auto; line-height:1.4;" +
