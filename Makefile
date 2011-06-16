@@ -14,12 +14,15 @@ all: xpi crx
 web: web/index.html web/gecko-updates.rdf web/chromium-updates.xml
 
 sign:
-	gpg -b < $(NAME)-$(VERSION).tar.bz2 > $(NAME)-$(VERSION).tar.bz2.sig
-	echo $(NAME)-$(VERSION).tar.bz2.sig
-	gpg -b < $(NAME)-$(VERSION).xpi > $(NAME)-$(VERSION).xpi.sig
-	echo $(NAME)-$(VERSION).tar.xpi.sig
-	gpg -b < $(NAME)-$(VERSION).crx > $(NAME)-$(VERSION).crx.sig
-	echo $(NAME)-$(VERSION).tar.crx.sig
+	if test -f $(NAME)-$(VERSION).tar.bz2; then \
+		gpg -b < $(NAME)-$(VERSION).tar.bz2 > $(NAME)-$(VERSION).tar.bz2.sig; \
+		echo $(NAME)-$(VERSION).tar.bz2.sig; fi
+	if test -f $(NAME)-$(VERSION).xpi; then \
+		gpg -b < $(NAME)-$(VERSION).xpi > $(NAME)-$(VERSION).xpi.sig; \
+		echo $(NAME)-$(VERSION).tar.xpi.sig; fi
+	if test -f $(NAME)-$(VERSION).crx; then \
+		gpg -b < $(NAME)-$(VERSION).crx > $(NAME)-$(VERSION).crx.sig; \
+		echo $(NAME)-$(VERSION).tar.crx.sig; fi
 
 # TODO: test makefile dependency is portable (and correct)
 web/gecko-updates.rdf: $(NAME)-$(VERSION).xpi
