@@ -13,5 +13,7 @@
 	em:name "SimplyRead";
 	em:description "Stop browsing, start reading. Press Ctrl-Alt-r or click the 'sr' icon in the status bar to toggle SimplyRead.";
 	em:creator "Nick White";
-	em:homepageUrl "http://njw.me.uk/software/simplyread/";
+	em:homepageURL "http://njw.me.uk/software/simplyread/";
+	em:updateURL "http://njw.me.uk/software/simplyread/gecko-updates.rdf";
+	em:updateKey "PUBKEY";
 	<http://usefulinc.com/ns/doap#license> <http://www.gnu.org/licenses/agpl.html>.

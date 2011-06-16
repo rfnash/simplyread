@@ -1,9 +1,20 @@
 NAME = simplyread
-VERSION = 0.4
+VERSION = 0.5
 WEBSITE = http://njw.me.uk/software/$(NAME)/
 KEYFILE = private.pem
 
 all: web/chromium-updates.xml web/index.html dist xpi crx
+
+# TODO: test makefile dependency is portable (and correct)
+web/gecko-updates.rdf: web/$(NAME)-$(VERSION).xpi
+	/tmp/uhura -o $@ -k $(KEYFILE) web/$(NAME)-$(VERSION).xpi $(WEBSITE)/$(NAME)-$(VERSION).xpi
+
+# gensig not working yet
+#web/gecko-updates.rdf: gecko/updates.ttl
+#	sed -e "s/VERSION/$(VERSION)/g" \
+#		-e "s/HASH/`sha1sum web/$(NAME)-$(VERSION).xpi|awk '{print $$1}'`/g" \
+#		-e "s/SIG/`sh gecko/gensig.sh gecko/updates.ttl $(KEYFILE)`/g" \
+#		< $< | rapper -i turtle -o rdfxml /dev/stdin 2>/dev/null > $@
 
 web/chromium-updates.xml: chromium/updates.xml
 	sed "s/VERSION/$(VERSION)/g" < $< > $@
@@ -38,7 +49,10 @@ xpi:
 	cp gecko/chrome/content/simplyread.xul gecko-build/chrome/content/
 	cp simplyread.js gecko-build/chrome/content/
 	rsvg -w 22 -h 22 icon.svg gecko-build/chrome/content/icon.png
-	sed "s/VERSION/$(VERSION)/g" < gecko/install.ttl | rapper -i turtle -o rdfxml /dev/stdin 2>/dev/null > gecko-build/install.rdf
+	#rsvg -w 64 -h 64 icon.svg gecko-build/icon.png
+	cp icon.svg gecko-build/icon.svg
+	sed -e "s/VERSION/$(VERSION)/g" -e "s/PUBKEY/`sh gecko/genpub.sh $(KEYFILE)`/g" \
+		< gecko/install.ttl | rapper -i turtle -o rdfxml /dev/stdin 2>/dev/null > gecko-build/install.rdf
 	cd gecko-build; zip -r ../web/$(NAME)-$(VERSION).xpi . 1>/dev/null
 	gpg -b < web/$(NAME)-$(VERSION).xpi > web/$(NAME)-$(VERSION).xpi.sig
 	rm -rf gecko-build
