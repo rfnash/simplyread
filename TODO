@@ -1,5 +1,4 @@
 gecko:
-	get working with firefox mobile https://wiki.mozilla.org/Mobile/Fennec/Extensions
 	finish update support. this means use tool http://www.softlights.net/projects/mxtools/uhura.html to sign mozilla thing
 		once it's working look into using rapper and bourne shell script to sign
 		this is difficult as mozilla wants the signature of a very particular serialisation of the update rdf
@@ -17,3 +16,17 @@ test:
 	make tests for chromium and firefox engines
 		https://developer.mozilla.org/en/Automated_testing_tips_and_tricks
 		https://developer.mozilla.org/en/Mozmill_Tests/Addon_tests
+
+
+# wishlist #
+
+gecko:
+	it would be nice to use the svg icon directly (smaller, faster, neater)
+		firefox doesn't render the font correctly, or automatically set the size (bug numbers)
+		doesn't work for main addon icon (only toolbar) (bug number?)
+	get working with firefox mobile https://wiki.mozilla.org/Mobile/Fennec/Extensions
+
+chromium:
+	it would be nice to use the svg icon directly (smaller, faster, neater)
+		currently not supported (bug number?)
+	would be nice to have permission warning reflect the fact that no disk or network activity is done; that this is self-contained and lovely. unfortunately it isn't fine-grained enough, and we need all "tabs" permission to inject the script into any page
