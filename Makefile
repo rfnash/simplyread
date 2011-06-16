@@ -66,7 +66,8 @@ xpi:
 	rm -rf $(NAME)-$(VERSION).xpi gecko-build
 	test -f $(KEYFILE) || openssl genrsa 1024 > $(KEYFILE)
 	mkdir -p gecko-build/chrome/content
-	cp COPYING gecko/chrome.manifest gecko-build/
+	sed 2q < COPYING > gecko-build/COPYING
+	cp gecko/chrome.manifest gecko-build/
 	cp gecko/chrome/content/simplyread.xul gecko-build/chrome/content/
 	cp simplyread.js gecko-build/chrome/content/
 	rsvg -w 22 -h 22 icon.svg gecko-build/chrome/content/icon.png
@@ -81,7 +82,8 @@ crx:
 	rm -rf chromium-build
 	test -f $(KEYFILE) || openssl genrsa 1024 > $(KEYFILE)
 	mkdir chromium-build
-	cp COPYING simplyread.js keybind.js chromium/viable.js chromium/background.html chromium-build/
+	sed 2q < COPYING > chromium-build/COPYING
+	cp simplyread.js keybind.js chromium/viable.js chromium/background.html chromium-build/
 	rsvg -w 19 -h 19 icon.svg chromium-build/icon.png
 	rsvg -w 48 -h 48 icon.svg chromium-build/icon48.png
 	rsvg -w 128 -h 128 icon.svg chromium-build/icon128.png
