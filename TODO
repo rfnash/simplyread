@@ -6,9 +6,6 @@ gecko:
 		https://developer.mozilla.org/en/Extension_Versioning,_Update_and_Compatibility#Update_RDF_Format
 		openssl dgst -sha512 -binary -sign private.pem web/gecko-updates.rdf i'm pretty sure generates the correct signature. however it then has to be encoded, using asn1/der & base64. also, according to the docs only the hash is signed/hashed, whereas it looks like the whole (particularly serialised) rdf is used by uhura
 
-web:
-	change 'download simplyread' button to 'simplyread 0.4 source'
-
 test:
 	current tests
 		test the keyboard shortcut, by sending an event;

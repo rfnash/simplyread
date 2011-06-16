@@ -22,16 +22,16 @@ WHERE {
 
 roqet -q -r csv -e "$q" -D /dev/stdin < $rdf | sed '/^Result/d' \
 | while read r; do
-	home=`echo $r | awk -F , '{print $2}'| sed -e 's/uri(\(.*\))/\1/'`
-	repo=`echo $r | awk -F , '{print $3}'| sed -e 's/uri(\(.*\))/\1/'`
-	licenseuri=`echo $r | awk -F , '{print $4}'| sed -e 's/uri(\(.*\))/\1/'`
-	maint=`echo $r | awk -F , '{print $5}'| sed -e 's/"\(.*\)"/\1/'`
-	mainthome=`echo $r | awk -F , '{print $6}'| sed -e 's/uri(\(.*\))/\1/'`
-	lang=`echo $r | awk -F , '{print $7}'| sed -e 's/"\(.*\)"/\1/'`
+	home=`echo $r | awk -F , '{print $2}'| sed -e 's/uri\(//' -e 's/\)//'`
+	repo=`echo $r | awk -F , '{print $3}'| sed -e 's/uri\(//' -e 's/\)//'`
+	licenseuri=`echo $r | awk -F , '{print $4}'| sed -e 's/uri\(//' -e 's/\)//'`
+	maint=`echo $r | awk -F , '{print $5}'| sed -e 's/"//g'`
+	mainthome=`echo $r | awk -F , '{print $6}'| sed -e 's/uri\(//' -e 's/\)//'`
+	lang=`echo $r | awk -F , '{print $7}'| sed -e 's/"//g'`
 	test "$licenseuri" = "http://www.gnu.org/licenses/gpl.html" && license="GPL"
 	test "$licenseuri" = "http://www.gnu.org/licenses/agpl.html" && license="AGPL"
 	test "$licenseuri" = "http://creativecommons.org/licenses/MIT/" && license="MIT"
-	repotype=`echo $r | awk -F , '{print $8}'| sed -e 's/uri(\(.*\))/\1/'`
+	repotype=`echo $r | awk -F , '{print $8}'| sed -e 's/uri\(//' -e 's/\)//'`
 	test "$repotype" = "http://usefulinc.com/ns/doap#GitRepository" && repocmd="git clone"
 
 	cat <<- _EOF_
@@ -40,5 +40,6 @@ roqet -q -r csv -e "$q" -D /dev/stdin < $rdf | sed '/^Result/d' \
 - Maintainer: [$maint]($mainthome)
 - Language: $lang
 - License: [$license]($licenseuri)
+- DOAP: [${home}doap.ttl](${home}doap.ttl)
 _EOF_
 done

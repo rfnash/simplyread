@@ -37,20 +37,28 @@ web/gecko-updates.rdf: $(NAME)-$(VERSION).xpi
 web/chromium-updates.xml: chromium/updates.xml
 	sed -e "s/VERSION/$(VERSION)/g" -e "s|WEBSITE|$(WEBSITE)|g" < $< > $@
 
-web/index.html: web/doap-src.ttl README webheader.html
-	echo making webpage
-	cat < webheader.html > $@
-	smu < README >> $@
-	echo '<h3><a href="$(NAME)-$(VERSION).tar.bz2">Download SimplyRead $(VERSION)</a><br />' >> $@
-	echo '<a href="$(NAME)-$(VERSION).tar.bz2.sig">GPG signature</a></h3>' >> $@
-	echo '<h3><a href="$(NAME)-$(VERSION).xpi">SimplyRead $(VERSION) for Firefox</a><br />' >> $@
-	echo '<a href="$(NAME)-$(VERSION).xpi.sig">GPG signature</a></h3>' >> $@
-	echo '<h3><a href="$(NAME)-$(VERSION).crx">SimplyRead $(VERSION) for Chromium</a><br />' >> $@
-	echo '<a href="$(NAME)-$(VERSION).xpi.crx">GPG signature</a></h3>' >> $@
-	echo '<hr />' >> $@
+web/doap.ttl: web/doap-src.ttl
 	sed -e "s|FOAF|$(AUTHORFOAF)|g" -e "s|AUTHORNAME|$(AUTHORNAME)|g" \
 	    -e "s|AUTHORHOME|$(AUTHORHOME)|g" -e "s|WEBSITE|$(WEBSITE)|g" \
-	    -e "s|REPOURL|$(REPOURL)|g" < web/doap-src.ttl > web/doap.ttl
+	    -e "s|REPOURL|$(REPOURL)|g" < $< > $@
+
+web/index.html: web/doap.ttl README
+	echo making webpage
+	echo "<!DOCTYPE html><html><head><title>$(NAME)</title>" > $@
+	echo '<link rel="alternate" type="text/turtle" title="rdf" href="doap.ttl" />' >> $@
+	echo '<style type="text/css">' >> $@
+	echo "body {font-family:sans-serif; width:38em; margin:auto; max-width:94%;}" >> $@
+	echo "h1 {font-size:1.6em; text-align:center;}" >> $@
+	echo "a {text-decoration:none; border-bottom-width:thin; border-bottom-style:dotted;}" >> $@
+	echo "</style></head><body>" >> $@
+	smu < README >> $@
+	echo "[$(NAME) $(VERSION) source]($(NAME)-$(VERSION).tar.bz2) ([sig]($(NAME)-$(VERSION).tar.bz2.sig))" | smu >> $@
+
+	echo "[$(NAME) $(VERSION) for Firefox]($(NAME)-$(VERSION).xpi) ([sig]($(NAME)-$(VERSION).xpi.sig))" | smu >> $@
+
+	echo "[$(NAME) $(VERSION) for Chromium]($(NAME)-$(VERSION).crx) ([sig]($(NAME)-$(VERSION).crx.sig))" | smu >> $@
+
+	echo '<hr />' >> $@
 	sh web/websummary.sh web/doap.ttl | smu >> $@
 	echo '</body></html>' >> $@
 

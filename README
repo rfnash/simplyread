@@ -7,8 +7,8 @@ removes everything but the article from a webpage, displaying it
 simply and attractively.
 
 The program is packaged as an extension for several web
-browsers, or as a standalone ECMAScript program to integrate
-into other browsers. Read the INSTALL file for details.
+browsers, or as a standalone JavaScript program to integrate
+into other browsers.
 
 Running it multiple times switches between showing the original
 page and the simple version.

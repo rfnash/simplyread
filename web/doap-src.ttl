@@ -9,7 +9,7 @@
 	doap:shortdesc "Stop browsing, start reading";
 	doap:homepage <WEBSITE/>;
 	doap:repository :repo;
-	doap:programming-language "ECMAScript";
+	doap:programming-language "JavaScript";
 	doap:license <http://www.gnu.org/licenses/agpl.html>;
 	doap:release :v0dot1, :v0dot2, :v0dot3, :v0dot4, :v0dot5;
 	doap:maintainer <FOAF>.
