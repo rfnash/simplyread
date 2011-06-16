@@ -1,0 +1,54 @@
+# Note this is populated from the Makefile
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix doap: <http://usefulinc.com/ns/doap#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix :     <WEBSITE/#>.
+
+:p a doap:Project;
+	doap:name "SimplyRead";
+	doap:shortdesc "Stop browsing, start reading";
+	doap:homepage <WEBSITE/>;
+	doap:repository :repo;
+	doap:programming-language "ECMAScript";
+	doap:license <http://www.gnu.org/licenses/agpl.html>;
+	doap:release :v0dot1, :v0dot2, :v0dot3, :v0dot4, :v0dot5;
+	doap:maintainer <FOAF>.
+
+<FOAF> a foaf:Person;
+	foaf:name "AUTHORNAME";
+	foaf:homepage <AUTHORHOME>.
+
+:repo a doap:GitRepository;
+	doap:location <REPOURL>.
+
+:v0dot1 a doap:Version;
+	doap:revision "0.1";
+	doap:created "2010-10-23";
+	doap:file-release <WEBSITE/readable-0.1.tar.bz2>.
+
+:v0dot2 a doap:Version;
+	doap:revision "0.2";
+	doap:created "2010-11-04";
+	doap:file-release <WEBSITE/readable-0.2.tar.bz2>,
+	                  <WEBSITE/readable-0.2.xpi>.
+
+:v0dot3 a doap:Version;
+	doap:revision "0.3";
+	doap:created "2010-11-13";
+	doap:file-release <WEBSITE/simplyread-0.3.tar.bz2>,
+	                  <WEBSITE/simplyread-0.3.xpi>,
+	                  <WEBSITE/simplyread-0.3.crx>.
+
+:v0dot4 a doap:Version;
+	doap:revision "0.4";
+	doap:created "2010-11-16";
+	doap:file-release <WEBSITE/simplyread-0.4.tar.bz2>,
+	                  <WEBSITE/simplyread-0.4.xpi>,
+	                  <WEBSITE/simplyread-0.4.crx>.
+
+:v0dot5 a doap:Version;
+	doap:revision "0.5";
+	doap:created "2011-06-16";
+	doap:file-release <WEBSITE/simplyread-0.5.tar.bz2>,
+	                  <WEBSITE/simplyread-0.5.xpi>,
+	                  <WEBSITE/simplyread-0.5.crx>.

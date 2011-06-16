@@ -1,9 +1,15 @@
 NAME = simplyread
 VERSION = 0.5
-WEBSITE = http://njw.me.uk/software/$(NAME)/
 KEYFILE = private.pem
 
-all: dist xpi crx
+WEBSITE = http://njw.me.uk/software/$(NAME)
+REPOURL = http://git.njw.me.uk/$(NAME).git
+AUTHORFOAF = http://njw.me.uk/card#i
+AUTHORNAME = Nick White
+AUTHORHOME = http://njw.me.uk
+GECKOID = simplyread@njw.me.uk
+
+all: xpi crx
 
 web: web/index.html web/gecko-updates.rdf web/chromium-updates.xml
 
@@ -16,20 +22,22 @@ sign:
 	echo $(NAME)-$(VERSION).tar.crx.sig
 
 # TODO: test makefile dependency is portable (and correct)
-web/gecko-updates.rdf: web/$(NAME)-$(VERSION).xpi
+web/gecko-updates.rdf: $(NAME)-$(VERSION).xpi
 	uhura -o $@ -k $(KEYFILE) $(NAME)-$(VERSION).xpi $(WEBSITE)/$(NAME)-$(VERSION).xpi
 
 # gensig not working yet
 #web/gecko-updates.rdf: gecko/updates.ttl
 #	sed -e "s/VERSION/$(VERSION)/g" \
+#		-e "s|WEBSITE|$(WEBSITE)|g" \
+#		-e "s|GECKOID|$(GECKOID)|g" \
 #		-e "s/HASH/`sha1sum $(NAME)-$(VERSION).xpi|awk '{print $$1}'`/g" \
 #		-e "s/SIG/`sh gecko/gensig.sh gecko/updates.ttl $(KEYFILE)`/g" \
 #		< $< | rapper -i turtle -o rdfxml /dev/stdin 2>/dev/null > $@
 
 web/chromium-updates.xml: chromium/updates.xml
-	sed "s/VERSION/$(VERSION)/g" < $< > $@
+	sed -e "s/VERSION/$(VERSION)/g" -e "s|WEBSITE|$(WEBSITE)|g" < $< > $@
 
-web/index.html: web/doap.ttl README webheader.html
+web/index.html: web/doap-src.ttl README webheader.html
 	echo making webpage
 	cat < webheader.html > $@
 	smu < README >> $@
@@ -40,7 +48,10 @@ web/index.html: web/doap.ttl README webheader.html
 	echo '<h3><a href="$(NAME)-$(VERSION).crx">SimplyRead $(VERSION) for Chromium</a><br />' >> $@
 	echo '<a href="$(NAME)-$(VERSION).xpi.crx">GPG signature</a></h3>' >> $@
 	echo '<hr />' >> $@
-	sh websummary.sh web/doap.ttl | smu >> $@
+	sed -e "s|FOAF|$(AUTHORFOAF)|g" -e "s|AUTHORNAME|$(AUTHORNAME)|g" \
+	    -e "s|AUTHORHOME|$(AUTHORHOME)|g" -e "s|WEBSITE|$(WEBSITE)|g" \
+	    -e "s|REPOURL|$(REPOURL)|g" < web/doap-src.ttl > web/doap.ttl
+	sh web/websummary.sh web/doap.ttl | smu >> $@
 	echo '</body></html>' >> $@
 
 dist:
@@ -53,14 +64,14 @@ dist:
 
 xpi:
 	rm -rf $(NAME)-$(VERSION).xpi gecko-build
+	test -f $(KEYFILE) || openssl genrsa 1024 > $(KEYFILE)
 	mkdir -p gecko-build/chrome/content
 	cp COPYING gecko/chrome.manifest gecko-build/
 	cp gecko/chrome/content/simplyread.xul gecko-build/chrome/content/
 	cp simplyread.js gecko-build/chrome/content/
 	rsvg -w 22 -h 22 icon.svg gecko-build/chrome/content/icon.png
-	#rsvg -w 64 -h 64 icon.svg gecko-build/icon.png
-	cp icon.svg gecko-build/icon.svg
-	sed -e "s/VERSION/$(VERSION)/g" -e "s/PUBKEY/`sh gecko/genpub.sh $(KEYFILE)`/g" \
+	rsvg -w 64 -h 64 icon.svg gecko-build/icon.png
+	sed -e "s/VERSION/$(VERSION)/g" -e "s|WEBSITE|$(WEBSITE)|g" -e "s|GECKOID|$(GECKOID)|g" -e "s/PUBKEY/`sh gecko/genpub.sh $(KEYFILE)`/g" \
 		< gecko/install.ttl | rapper -i turtle -o rdfxml /dev/stdin 2>/dev/null > gecko-build/install.rdf
 	cd gecko-build; zip -r ../$(NAME)-$(VERSION).xpi . 1>/dev/null
 	rm -rf gecko-build
@@ -68,12 +79,13 @@ xpi:
 
 crx:
 	rm -rf chromium-build
+	test -f $(KEYFILE) || openssl genrsa 1024 > $(KEYFILE)
 	mkdir chromium-build
 	cp COPYING simplyread.js keybind.js chromium/viable.js chromium/background.html chromium-build/
 	rsvg -w 19 -h 19 icon.svg chromium-build/icon.png
 	rsvg -w 48 -h 48 icon.svg chromium-build/icon48.png
 	rsvg -w 128 -h 128 icon.svg chromium-build/icon128.png
-	sed "s/VERSION/$(VERSION)/g" < chromium/manifest.json > chromium-build/manifest.json
+	sed -e "s/VERSION/$(VERSION)/g" -e "s|WEBSITE|$(WEBSITE)|g" < chromium/manifest.json > chromium-build/manifest.json
 	sh chromium/makecrx.sh chromium-build $(KEYFILE) > $(NAME)-$(VERSION).crx
 	rm -r chromium-build
 	echo $(NAME)-$(VERSION).crx

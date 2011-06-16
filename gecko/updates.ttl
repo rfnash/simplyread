@@ -3,7 +3,7 @@
 @prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 @prefix em:   <http://www.mozilla.org/2004/em-rdf#>.
 
-<urn:mozilla:extension:simplyread@njw.me.uk>
+<urn:mozilla:extension:GECKOID>
 	em:signature "SIG";
 	em:updates [ a rdf:Seq ;
 		rdf:li <:VERSION>;
@@ -15,6 +15,6 @@
 		em:id "{ec8030f7-c20a-464f-9b0e-13a3a9e97384}";
 		em:minVersion "3.0";
 		em:maxVersion "4.0.*";
-		em:updateLink "http://njw.me.uk/simplyread/simplyread-VERSION.xpi";
+		em:updateLink "WEBSITE/simplyread-VERSION.xpi";
 		em:updateHash "sha1:HASH";
 	].

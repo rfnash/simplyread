@@ -2,7 +2,7 @@
 @prefix em:   <http://www.mozilla.org/2004/em-rdf#>.
 
 <urn:mozilla:install-manifest>
-	em:id "simplyread@njw.me.uk";
+	em:id "GECKOID";
 	em:version "VERSION";
 	em:type "2";
 	em:targetApplication [
@@ -13,7 +13,7 @@
 	em:name "SimplyRead";
 	em:description "Stop browsing, start reading. Press Ctrl-Alt-r or click the 'sr' icon in the status bar to toggle SimplyRead.";
 	em:creator "Nick White";
-	em:homepageURL "http://njw.me.uk/software/simplyread/";
-	em:updateURL "http://njw.me.uk/software/simplyread/gecko-updates.rdf";
+	em:homepageURL "WEBSITE/";
+	em:updateURL "WEBSITE/gecko-updates.rdf";
 	em:updateKey "PUBKEY";
 	<http://usefulinc.com/ns/doap#license> <http://www.gnu.org/licenses/agpl.html>.

@@ -1,26 +1,10 @@
 gecko:
-	test with firefox 4.0, and update version info
-		http://blog.mozilla.com/addons/2010/11/11/making-add-on-compatible-firefox-4/
-		will have to attach the button to the 'addon bar', rather than the status bar
-		the addon bar is a standard 'toolbar', so things have to be rewritten accordingly
-		http://mike.kaply.com/2011/01/25/the-firefox-4-add-on-bar-for-developers/
-		https://developer.mozilla.org/en/The_add-on_bar
-		https://developer.mozilla.org/en/XUL/Toolbars/Creating_toolbar_buttons
-		this means i'll have to set the icon image using css - note that this can be a svg (see http://blog.mozilla.com/addons/2010/12/02/toolbar-buttons-in-firefox-4/ )
-	include a 64x64 icon for the addon manager
-		hopefully done by just putting in root - needs testing as iconURL vs icon64URL documentation conflicts
-		do try a straight svg here too (just called icon.svg) (prob won't work)
-		https://developer.mozilla.org/en/Install_Manifests#iconURL
 	get working with firefox mobile https://wiki.mozilla.org/Mobile/Fennec/Extensions
 	finish update support. this means use tool http://www.softlights.net/projects/mxtools/uhura.html to sign mozilla thing
 		once it's working look into using rapper and bourne shell script to sign
 		this is difficult as mozilla wants the signature of a very particular serialisation of the update rdf
 		https://developer.mozilla.org/en/Extension_Versioning,_Update_and_Compatibility#Update_RDF_Format
 		openssl dgst -sha512 -binary -sign private.pem web/gecko-updates.rdf i'm pretty sure generates the correct signature. however it then has to be encoded, using asn1/der & base64. also, according to the docs only the hash is signed/hashed, whereas it looks like the whole (particularly serialised) rdf is used by uhura
-
-build:
-	set website from makefile variable / sed everywhere
-	add clauses to makefile so make can work without a private key (for easy 3rd party modifications etc)
 
 web:
 	change 'download simplyread' button to 'simplyread 0.4 source'

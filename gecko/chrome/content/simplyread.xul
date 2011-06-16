@@ -4,10 +4,7 @@
 	<keyset>
 		<key id="simplyread" modifiers="accel alt" key="r" oncommand="simplyread()" />
 	</keyset>
-	<statusbar id="status-bar">
-		<image id="simplyread-icon" src="chrome://simplyread/content/icon.png" onclick="simplyread()" />
-	</statusbar>
-	<statusbar id="addon-bar"><!-- gecko 2+ -->
+	<statusbar id="addon-bar">
 		<image id="simplyread-icon" src="chrome://simplyread/content/icon.png" onclick="simplyread()" />
 	</statusbar>
 </overlay>
