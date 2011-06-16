@@ -22,11 +22,12 @@ test:
 
 gecko:
 	it would be nice to use the svg icon directly (smaller, faster, neater)
-		firefox doesn't render the font correctly, or automatically set the size (bug numbers)
-		doesn't work for main addon icon (only toolbar) (bug number?)
+		firefox doesn't render the font correctly (can't find bug; test more then report it)
+		doesn't automatically set the size (https://bugzilla.mozilla.org/show_bug.cgi?id=583231#c31 - may be workaroundable by setting class of the image to toolbarbutton-1)
+		doesn't work for main addon icon (only toolbar) (can't find bug; test more then report it)
 	get working with firefox mobile https://wiki.mozilla.org/Mobile/Fennec/Extensions
 
 chromium:
 	it would be nice to use the svg icon directly (smaller, faster, neater)
-		currently not supported (bug number?)
+		currently not supported (http://code.google.com/p/chromium/issues/detail?id=29683)
 	would be nice to have permission warning reflect the fact that no disk or network activity is done; that this is self-contained and lovely. unfortunately it isn't fine-grained enough, and we need all "tabs" permission to inject the script into any page
