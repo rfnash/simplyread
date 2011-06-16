@@ -3,16 +3,26 @@ VERSION = 0.5
 WEBSITE = http://njw.me.uk/software/$(NAME)/
 KEYFILE = private.pem
 
-all: web/chromium-updates.xml web/index.html dist xpi crx
+all: dist xpi crx
+
+web: web/index.html web/gecko-updates.rdf web/chromium-updates.xml
+
+sign:
+	gpg -b < $(NAME)-$(VERSION).tar.bz2 > $(NAME)-$(VERSION).tar.bz2.sig
+	echo $(NAME)-$(VERSION).tar.bz2.sig
+	gpg -b < $(NAME)-$(VERSION).xpi > $(NAME)-$(VERSION).xpi.sig
+	echo $(NAME)-$(VERSION).tar.xpi.sig
+	gpg -b < $(NAME)-$(VERSION).crx > $(NAME)-$(VERSION).crx.sig
+	echo $(NAME)-$(VERSION).tar.crx.sig
 
 # TODO: test makefile dependency is portable (and correct)
 web/gecko-updates.rdf: web/$(NAME)-$(VERSION).xpi
-	/tmp/uhura -o $@ -k $(KEYFILE) web/$(NAME)-$(VERSION).xpi $(WEBSITE)/$(NAME)-$(VERSION).xpi
+	uhura -o $@ -k $(KEYFILE) $(NAME)-$(VERSION).xpi $(WEBSITE)/$(NAME)-$(VERSION).xpi
 
 # gensig not working yet
 #web/gecko-updates.rdf: gecko/updates.ttl
 #	sed -e "s/VERSION/$(VERSION)/g" \
-#		-e "s/HASH/`sha1sum web/$(NAME)-$(VERSION).xpi|awk '{print $$1}'`/g" \
+#		-e "s/HASH/`sha1sum $(NAME)-$(VERSION).xpi|awk '{print $$1}'`/g" \
 #		-e "s/SIG/`sh gecko/gensig.sh gecko/updates.ttl $(KEYFILE)`/g" \
 #		< $< | rapper -i turtle -o rdfxml /dev/stdin 2>/dev/null > $@
 
@@ -35,12 +45,11 @@ web/index.html: web/doap.ttl README webheader.html
 
 dist:
 	mkdir -p $(NAME)-$(VERSION)
-	cp simplyread.js keybind.js COPYING INSTALL README Makefile $(NAME)-$(VERSION)
+	cp simplyread.js keybind.js icon.svg COPYING INSTALL README Makefile $(NAME)-$(VERSION)
 	cp -R gecko chromium tests $(NAME)-$(VERSION)
-	tar -c $(NAME)-$(VERSION) | bzip2 -c > web/$(NAME)-$(VERSION).tar.bz2
-	gpg -b < web/$(NAME)-$(VERSION).tar.bz2 > web/$(NAME)-$(VERSION).tar.bz2.sig
+	tar -c $(NAME)-$(VERSION) | bzip2 -c > $(NAME)-$(VERSION).tar.bz2
 	rm -rf $(NAME)-$(VERSION)
-	echo web/$(NAME)-$(VERSION).tar.bz2 web/$(NAME)-$(VERSION).tar.bz2.sig
+	echo $(NAME)-$(VERSION).tar.bz2
 
 xpi:
 	rm -rf $(NAME)-$(VERSION).xpi gecko-build
@@ -53,10 +62,9 @@ xpi:
 	cp icon.svg gecko-build/icon.svg
 	sed -e "s/VERSION/$(VERSION)/g" -e "s/PUBKEY/`sh gecko/genpub.sh $(KEYFILE)`/g" \
 		< gecko/install.ttl | rapper -i turtle -o rdfxml /dev/stdin 2>/dev/null > gecko-build/install.rdf
-	cd gecko-build; zip -r ../web/$(NAME)-$(VERSION).xpi . 1>/dev/null
-	gpg -b < web/$(NAME)-$(VERSION).xpi > web/$(NAME)-$(VERSION).xpi.sig
+	cd gecko-build; zip -r ../$(NAME)-$(VERSION).xpi . 1>/dev/null
 	rm -rf gecko-build
-	echo web/$(NAME)-$(VERSION).xpi web/$(NAME)-$(VERSION).xpi.sig
+	echo $(NAME)-$(VERSION).xpi
 
 crx:
 	rm -rf chromium-build
@@ -66,10 +74,9 @@ crx:
 	rsvg -w 48 -h 48 icon.svg chromium-build/icon48.png
 	rsvg -w 128 -h 128 icon.svg chromium-build/icon128.png
 	sed "s/VERSION/$(VERSION)/g" < chromium/manifest.json > chromium-build/manifest.json
-	sh chromium/makecrx.sh chromium-build $(KEYFILE) > web/$(NAME)-$(VERSION).crx
+	sh chromium/makecrx.sh chromium-build $(KEYFILE) > $(NAME)-$(VERSION).crx
 	rm -r chromium-build
-	gpg -b < web/$(NAME)-$(VERSION).crx > web/$(NAME)-$(VERSION).crx.sig
-	echo web/$(NAME)-$(VERSION).crx web/$(NAME)-$(VERSION).crx.sig
+	echo $(NAME)-$(VERSION).crx
 
 # note that tests require a patched surf browser; see tests/runtest.sh
 test:
@@ -80,6 +87,6 @@ test:
 		test ! -s $$i.diff && rm $$i.diff; \
 	done
 
-.PHONY: all dist xpi crx test
+.PHONY: all dist xpi crx test web sign
 .SUFFIXES: ttl html png svg
 .SILENT:
