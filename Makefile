@@ -13,6 +13,9 @@ all: xpi crx
 
 web: web/index.html web/gecko-updates.rdf web/chromium-updates.xml
 
+$(KEYFILE):
+	openssl genrsa 1024 > $@
+
 sign:
 	if test -f $(NAME)-$(VERSION).tar.bz2; then \
 		gpg -b < $(NAME)-$(VERSION).tar.bz2 > $(NAME)-$(VERSION).tar.bz2.sig; \
@@ -25,7 +28,7 @@ sign:
 		echo $(NAME)-$(VERSION).tar.crx.sig; fi
 
 # TODO: test makefile dependency is portable (and correct)
-web/gecko-updates.rdf: $(NAME)-$(VERSION).xpi
+web/gecko-updates.rdf: $(NAME)-$(VERSION).xpi $(KEYFILE)
 	uhura -o $@ -k $(KEYFILE) $(NAME)-$(VERSION).xpi $(WEBSITE)/$(NAME)-$(VERSION).xpi
 
 # gensig not working yet
@@ -55,11 +58,11 @@ web/index.html: web/doap.ttl README
 	echo "a {text-decoration:none; border-bottom-width:thin; border-bottom-style:dotted;}" >> $@
 	echo "</style></head><body>" >> $@
 	smu < README >> $@
-	echo "[$(NAME) $(VERSION) source]($(NAME)-$(VERSION).tar.bz2) ([sig]($(NAME)-$(VERSION).tar.bz2.sig))" | smu >> $@
+	echo "[SimplyRead $(VERSION) source]($(NAME)-$(VERSION).tar.bz2) ([sig]($(NAME)-$(VERSION).tar.bz2.sig))" | smu >> $@
 
-	echo "[$(NAME) $(VERSION) for Firefox]($(NAME)-$(VERSION).xpi) ([sig]($(NAME)-$(VERSION).xpi.sig))" | smu >> $@
+	echo "[SimplyRead $(VERSION) for Firefox]($(NAME)-$(VERSION).xpi) ([sig]($(NAME)-$(VERSION).xpi.sig))" | smu >> $@
 
-	echo "[$(NAME) $(VERSION) for Chromium]($(NAME)-$(VERSION).crx) ([sig]($(NAME)-$(VERSION).crx.sig))" | smu >> $@
+	echo "[SimplyRead $(VERSION) for Chromium]($(NAME)-$(VERSION).crx) ([sig]($(NAME)-$(VERSION).crx.sig))" | smu >> $@
 
 	echo '<hr />' >> $@
 	sh web/websummary.sh web/doap.ttl | smu >> $@
@@ -73,9 +76,8 @@ dist:
 	rm -rf $(NAME)-$(VERSION)
 	echo $(NAME)-$(VERSION).tar.bz2
 
-xpi:
+xpi: $(KEYFILE)
 	rm -rf $(NAME)-$(VERSION).xpi gecko-build
-	test -f $(KEYFILE) || openssl genrsa 1024 > $(KEYFILE)
 	mkdir -p gecko-build/chrome/content
 	sed 2q < COPYING > gecko-build/COPYING
 	cp gecko/chrome.manifest gecko-build/
@@ -89,9 +91,8 @@ xpi:
 	rm -rf gecko-build
 	echo $(NAME)-$(VERSION).xpi
 
-crx:
+crx: $(KEYFILE)
 	rm -rf chromium-build
-	test -f $(KEYFILE) || openssl genrsa 1024 > $(KEYFILE)
 	mkdir chromium-build
 	sed 2q < COPYING > chromium-build/COPYING
 	cp simplyread.js keybind.js chromium/viable.js chromium/background.html chromium-build/
