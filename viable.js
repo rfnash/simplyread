@@ -1,6 +1,6 @@
 /* See COPYING file for copyright, license and warranty details. */
 
-function simplyread-viable() {
+function simplyread_viable() {
 	var doc;
 	doc = (document.body === undefined)
 	      ? window.content.document : document;

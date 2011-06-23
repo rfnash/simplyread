@@ -1,1 +1,1 @@
-if(simplyread-viable()) chrome.extension.sendRequest({}, function(response) {});
+if(simplyread_viable()) chrome.extension.sendRequest({}, function(response) {});
