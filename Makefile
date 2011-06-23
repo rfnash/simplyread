@@ -70,7 +70,7 @@ web/index.html: web/doap.ttl README
 
 dist:
 	mkdir -p $(NAME)-$(VERSION)
-	cp simplyread.js keybind.js icon.svg COPYING INSTALL README Makefile $(NAME)-$(VERSION)
+	cp simplyread.js viable.js keybind.js icon.svg COPYING INSTALL README Makefile $(NAME)-$(VERSION)
 	cp -R gecko chromium tests $(NAME)-$(VERSION)
 	tar -c $(NAME)-$(VERSION) | bzip2 -c > $(NAME)-$(VERSION).tar.bz2
 	rm -rf $(NAME)-$(VERSION)
