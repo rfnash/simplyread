@@ -8,10 +8,10 @@
 	em:targetApplication [
 		em:id "{ec8030f7-c20a-464f-9b0e-13a3a9e97384}";
 		em:minVersion "3.0";
-		em:maxVersion "4.0.*"
+		em:maxVersion "6.*"
 	] ;
 	em:name "SimplyRead";
-	em:description "Stop browsing, start reading. Press Ctrl-Alt-r or click the 'sr' icon in the status bar to toggle SimplyRead.";
+	em:description "Stop browsing, start reading. Press Ctrl-Alt-r or press the 'sr' button in the addons bar to toggle SimplyRead.";
 	em:creator "Nick White";
 	em:homepageURL "WEBSITE/";
 	em:updateURL "WEBSITE/gecko-updates.rdf";

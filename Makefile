@@ -83,6 +83,7 @@ xpi: $(KEYFILE)
 	cp gecko/chrome.manifest gecko-build/
 	cp gecko/chrome/content/simplyread.xul gecko-build/chrome/content/
 	cp simplyread.js gecko-build/chrome/content/
+	cat viable.js gecko/viablehook.js > gecko-build/chrome/content/viable.js
 	rsvg -w 22 -h 22 icon.svg gecko-build/chrome/content/icon.png
 	rsvg -w 64 -h 64 icon.svg gecko-build/icon.png
 	sed -e "s/VERSION/$(VERSION)/g" -e "s|WEBSITE|$(WEBSITE)|g" -e "s|GECKOID|$(GECKOID)|g" -e "s/PUBKEY/`sh gecko/genpub.sh $(KEYFILE)`/g" \
@@ -95,7 +96,8 @@ crx: $(KEYFILE)
 	rm -rf chromium-build
 	mkdir chromium-build
 	sed 2q < COPYING > chromium-build/COPYING
-	cp simplyread.js keybind.js chromium/viable.js chromium/background.html chromium-build/
+	cp simplyread.js keybind.js chromium/background.html chromium-build/
+	cat viable.js chromium/viablehook.js > chromium-build/viable.js
 	rsvg -w 19 -h 19 icon.svg chromium-build/icon.png
 	rsvg -w 48 -h 48 icon.svg chromium-build/icon48.png
 	rsvg -w 128 -h 128 icon.svg chromium-build/icon128.png

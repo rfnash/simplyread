@@ -1,7 +1,6 @@
 chromium:
 	generate appid for use in update xml
 		see GenerateId in extension.cc of chrome for how it works
-		currently should be dbggpgfcgemloeeldimghohejgnkahdi
 
 gecko:
 	use rapper and bourne shell script to sign
