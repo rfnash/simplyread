@@ -4,7 +4,6 @@
 		sendResponse({});
 	};
 
-	/* called on page load if viable */
 	chrome.extension.onRequest.addListener(onRequest);
 
 	chrome.pageAction.onClicked.addListener(function(tab) {

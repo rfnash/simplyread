@@ -1,8 +1,4 @@
-/*
- * SimplyRead - Stop browsing, start reading
- *
- * See COPYING file for copyright, license and warranty details.
- */
+/* See COPYING file for copyright, license and warranty details. */
 
 if(window.content && window.content.document.simplyread_original === undefined) window.content.document.simplyread_original = false;
 
