@@ -1,3 +1,13 @@
+core:
+	inline <style> tags should be dropped. p.p1 for example is
+	specified in html here:
+	http://www.fringereview.co.uk/pageView.php?pagename=Latitude%20Festival%202011
+		note that as this needs to also drop its children, we can't
+		just use regex. whether using js remove element function is
+		safe (e.g. will not affect original html when toggled) is
+		unsure. doesn't look like there's a 'disable' attribute for
+		the tag, so it's our best hope.
+
 chromium:
 	generate appid for use in update xml
 		see GenerateId in extension.cc of chrome for how it works
@@ -7,6 +17,9 @@ gecko:
 		this is difficult as mozilla wants the signature of a very particular serialisation of the update rdf
 		https://developer.mozilla.org/en/Extension_Versioning,_Update_and_Compatibility#Update_RDF_Format
 		openssl dgst -sha512 -binary -sign private.pem web/gecko-updates.rdf i'm pretty sure generates the correct signature. however it then has to be encoded, using asn1/der & base64. also, according to the docs only the hash is signed/hashed, whereas it looks like the whole (particularly serialised) rdf is used by uhura
+	new extension api, looks nicer and more chrome-like: https://addons.mozilla.org/en-US/developers/docs/sdk/1.0/dev-guide/addon-development/api-modules.html
+		'page-mod' is the main api to use for this
+		'widget' is something on the addon bar
 
 test:
 	current tests
