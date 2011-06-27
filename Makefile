@@ -50,7 +50,7 @@ web/doap.ttl: web/doap-src.ttl
 
 web/index.html: web/doap.ttl README
 	echo making webpage
-	echo "<!DOCTYPE html><html><head><title>$(NAME)</title>" > $@
+	echo "<!DOCTYPE html><html><head><title>SimplyRead - Stop browsing, start reading</title>" > $@
 	echo '<link rel="alternate" type="text/turtle" title="rdf" href="doap.ttl" />' >> $@
 	echo '<style type="text/css">' >> $@
 	echo "body {font-family:sans-serif; width:38em; margin:auto; max-width:94%;}" >> $@
