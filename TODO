@@ -7,6 +7,8 @@ core:
 		safe (e.g. will not affect original html when toggled) is
 		unsure. doesn't look like there's a 'disable' attribute for
 		the tag, so it's our best hope.
+	consider counting <br />\s<br \> as a <p> as least some blogspot pages need it
+		http://davidz25.blogspot.com/2011/06/writing-c-library-part-1.html
 
 chromium:
 	generate appid for use in update xml
@@ -17,9 +19,37 @@ gecko:
 		this is difficult as mozilla wants the signature of a very particular serialisation of the update rdf
 		https://developer.mozilla.org/en/Extension_Versioning,_Update_and_Compatibility#Update_RDF_Format
 		openssl dgst -sha512 -binary -sign private.pem web/gecko-updates.rdf i'm pretty sure generates the correct signature. however it then has to be encoded, using asn1/der & base64. also, according to the docs only the hash is signed/hashed, whereas it looks like the whole (particularly serialised) rdf is used by uhura
-	new extension api, looks nicer and more chrome-like: https://addons.mozilla.org/en-US/developers/docs/sdk/1.0/dev-guide/addon-development/api-modules.html
-		'page-mod' is the main api to use for this
-		'widget' is something on the addon bar
+	make bootstrappable
+		http://www.oxymoronical.com/blog/2011/01/Playing-with-windows-in-restartless-bootstrapped-extensions
+		http://starkravingfinkle.org/blog/2011/01/bootstrap-jones-adventures-in-restartless-add-ons/
+		http://blog.fpmurphy.com/2011/02/firefox-4-restartless-add-ons.html
+		this could easily get messy, so might not be worth it.
+		startup:
+		- add a resource:// alias so scripts can be referenced
+		- add simplyread.js and viable.js to all documents
+		- add a listener to nsIWindowMediator onOpenWindow.
+		- get this listener to inject simplyread.js and viable.js,
+		  using their resource:// urls into new documents
+		- add a listener to tab changing, to retrigger viable test
+		shutdown:
+		- remove these two from all documents
+		- remove listeners
+		- remove any addon bar things
+	add fennec support - https://wiki.mozilla.org/Mobile/Fennec/Extensions
+		'electrolysis' may require modifications
+	bug allow turtle for install.rdf - currently trying errors with:
+		Firefox could not install this item because
+		"install-whb..rdf" (provided by the item) is not well-formed
+		or does not exist. Please contact the author about this
+		problem.
+		and this in the error console:
+		Error: not well-formed
+		Source File: file:///tmp/install-whb..rdf
+		Line: 1, Column: 1
+		Source Code:
+		@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+
+change the short description to something more readable like "makes webpages more readable" or "removes distractions from webpages"
 
 test:
 	current tests
