@@ -118,4 +118,4 @@ test:
 
 .PHONY: all dist xpi crx test web sign
 .SUFFIXES: ttl html png svg
-#.SILENT:
+.SILENT:
