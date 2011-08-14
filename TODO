@@ -29,19 +29,6 @@ gecko:
 		- remove any addon bar things
 	add fennec support - https://wiki.mozilla.org/Mobile/Fennec/Extensions
 		'electrolysis' may require modifications
-	bug allow turtle for install.rdf - currently trying errors with:
-		Firefox could not install this item because
-		"install-whb..rdf" (provided by the item) is not well-formed
-		or does not exist. Please contact the author about this
-		problem.
-		and this in the error console:
-		Error: not well-formed
-		Source File: file:///tmp/install-whb..rdf
-		Line: 1, Column: 1
-		Source Code:
-		@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
-
-change the short description to something more readable like "makes webpages more readable" or "removes distractions from webpages"
 
 test:
 	current tests
@@ -63,7 +50,6 @@ gecko:
 		firefox doesn't render the font correctly (can't find bug; test more then report it)
 		doesn't automatically set the size (https://bugzilla.mozilla.org/show_bug.cgi?id=583231#c31 - may be workaroundable by setting class of the image to toolbarbutton-1)
 		doesn't work for main addon icon (only toolbar) (can't find bug; test more then report it)
-	get working with firefox mobile https://wiki.mozilla.org/Mobile/Fennec/Extensions
 
 chromium:
 	it would be nice to use the svg icon directly (smaller, faster, neater)
