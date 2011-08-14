@@ -25,6 +25,7 @@ gecko:
 		- remove any addon bar things
 	add fennec support - https://wiki.mozilla.org/Mobile/Fennec/Extensions
 		'electrolysis' may require modifications
+	consider using plain rdfxml rather than turtle; conversion is a pain, and it's clear rdf is on its way out of gecko anyway
 
 test (currently outdated):
 	current tests
