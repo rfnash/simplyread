@@ -1,4 +1,5 @@
 NAME = simplyread
+UPNAME = SimplyRead
 VERSION = 0.5
 KEYFILE = private.pem
 
@@ -50,7 +51,7 @@ web/doap.ttl: web/doap-src.ttl
 
 web/index.html: web/doap.ttl README
 	echo making webpage
-	echo "<!DOCTYPE html><html><head><title>SimplyRead - Stop browsing, start reading</title>" > $@
+	echo "<!DOCTYPE html><html><head><title>$(UPNAME)</title>" > $@
 	echo '<link rel="alternate" type="text/turtle" title="rdf" href="doap.ttl" />' >> $@
 	echo '<style type="text/css">' >> $@
 	echo "body {font-family:sans-serif; width:38em; margin:auto; max-width:94%;}" >> $@
@@ -58,11 +59,11 @@ web/index.html: web/doap.ttl README
 	echo "a {text-decoration:none; border-bottom-width:thin; border-bottom-style:dotted;}" >> $@
 	echo "</style></head><body>" >> $@
 	smu < README >> $@
-	echo "[SimplyRead $(VERSION) source]($(NAME)-$(VERSION).tar.bz2) ([sig]($(NAME)-$(VERSION).tar.bz2.sig))" | smu >> $@
+	echo "[$(UPNAME) $(VERSION) source]($(NAME)-$(VERSION).tar.bz2) ([sig]($(NAME)-$(VERSION).tar.bz2.sig))" | smu >> $@
 
-	echo "[SimplyRead $(VERSION) for Firefox]($(NAME)-$(VERSION).xpi) ([sig]($(NAME)-$(VERSION).xpi.sig))" | smu >> $@
+	echo "[$(UPNAME) $(VERSION) for Firefox]($(NAME)-$(VERSION).xpi) ([sig]($(NAME)-$(VERSION).xpi.sig))" | smu >> $@
 
-	echo "[SimplyRead $(VERSION) for Chromium]($(NAME)-$(VERSION).crx) ([sig]($(NAME)-$(VERSION).crx.sig))" | smu >> $@
+	echo "[$(UPNAME) $(VERSION) for Chromium]($(NAME)-$(VERSION).crx) ([sig]($(NAME)-$(VERSION).crx.sig))" | smu >> $@
 
 	echo '<hr />' >> $@
 	sh web/websummary.sh web/doap.ttl | smu >> $@
@@ -117,4 +118,4 @@ test:
 
 .PHONY: all dist xpi crx test web sign
 .SUFFIXES: ttl html png svg
-.SILENT:
+#.SILENT:

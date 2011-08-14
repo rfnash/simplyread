@@ -5,7 +5,7 @@
 
 :p a doap:Project;
 	doap:name "SimplyRead";
-	doap:shortdesc "Stop browsing, start reading";
+	doap:shortdesc "Removes distractions from webpages";
 	doap:homepage <WEBSITE/>;
 	doap:repository :repo;
 	doap:programming-language "JavaScript";
