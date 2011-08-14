@@ -1,12 +1,4 @@
 core:
-	inline <style> tags should be dropped. p.p1 for example is
-	specified in html here:
-	http://www.fringereview.co.uk/pageView.php?pagename=Latitude%20Festival%202011
-		note that as this needs to also drop its children, we can't
-		just use regex. whether using js remove element function is
-		safe (e.g. will not affect original html when toggled) is
-		unsure. doesn't look like there's a 'disable' attribute for
-		the tag, so it's our best hope.
 	consider counting <br />\s<br \> as a <p> as least some blogspot pages need it
 		http://davidz25.blogspot.com/2011/06/writing-c-library-part-1.html
 
@@ -76,4 +68,8 @@ gecko:
 chromium:
 	it would be nice to use the svg icon directly (smaller, faster, neater)
 		currently not supported (http://code.google.com/p/chromium/issues/detail?id=29683)
+		get the following error:
+		[18840:18840:7322270382:ERROR:extension_error_reporter.cc(55)]
+		Extension error:
+		Package is invalid. Details: 'Could not decode theme image.'
 	would be nice to have permission warning reflect the fact that no disk or network activity is done; that this is self-contained and lovely. unfortunately it isn't fine-grained enough, and we need all "tabs" permission to inject the script into any page

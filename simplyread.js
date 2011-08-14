@@ -53,6 +53,8 @@ function simplyread()
 	fresh.innerHTML = fresh.innerHTML.replace(/<\/?font[^>]*>/g, "");
 	fresh.innerHTML = fresh.innerHTML.replace(/style="[^"]*"/g, "");
 	fresh.innerHTML = fresh.innerHTML.replace(/<\/?a[^>]*>/g, "");
+	fresh.innerHTML = fresh.innerHTML.replace(/<\/?span[^>]*>/g, "");
+	fresh.innerHTML = fresh.innerHTML.replace(/<style[^>]*>/g, "<style media=\"aural\">");
 	
 	for (var i = 0; i < doc.styleSheets.length; i++)
 		doc.styleSheets[i].disabled = true;
