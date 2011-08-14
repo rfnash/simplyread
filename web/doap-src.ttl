@@ -10,7 +10,7 @@
 	doap:repository :repo;
 	doap:programming-language "JavaScript";
 	doap:license <http://www.gnu.org/licenses/agpl.html>;
-	doap:release :v0dot1, :v0dot2, :v0dot3, :v0dot4, :v0dot5;
+	doap:release :v0dot1, :v0dot2, :v0dot3, :v0dot4, :v0dot5, :v0dot6;
 	doap:maintainer <FOAF>.
 
 <FOAF> a foaf:Person;
@@ -51,3 +51,10 @@
 	doap:file-release <WEBSITE/simplyread-0.5.tar.bz2>,
 	                  <WEBSITE/simplyread-0.5.xpi>,
 	                  <WEBSITE/simplyread-0.5.crx>.
+
+:v0dot6 a doap:Version;
+	doap:revision "0.6";
+	doap:created "2011-08-14";
+	doap:file-release <WEBSITE/simplyread-0.6.tar.bz2>,
+	                  <WEBSITE/simplyread-0.6.xpi>,
+	                  <WEBSITE/simplyread-0.6.crx>.

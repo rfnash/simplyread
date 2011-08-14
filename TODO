@@ -26,7 +26,7 @@ gecko:
 	add fennec support - https://wiki.mozilla.org/Mobile/Fennec/Extensions
 		'electrolysis' may require modifications
 
-test:
+test (currently outdated):
 	current tests
 		test the keyboard shortcut, by sending an event;
 			e=document.createEvent(...

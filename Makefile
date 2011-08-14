@@ -1,6 +1,6 @@
 NAME = simplyread
 UPNAME = SimplyRead
-VERSION = 0.5
+VERSION = 0.6
 KEYFILE = private.pem
 
 WEBSITE = http://njw.me.uk/software/$(NAME)
