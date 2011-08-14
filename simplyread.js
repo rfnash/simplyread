@@ -31,6 +31,7 @@ function simplyread()
 	}
 	
 	doc.simplyread_original = doc.body.innerHTML;
+	doc.body.innerHTML = doc.body.innerHTML.replace(/<br[^>]*>\s*<br[^>]*>/g, "<p>");
 	
 	var biggest_num = 0;
 	var biggest_tag;
@@ -61,7 +62,7 @@ function simplyread()
 	
 	doc.body.innerHTML =
 		"<style type=\"text/css\"> p{margin:0ex auto;}" +
-		" p+p{text-indent:2em;} body {background-color:#cccccc}" +
+		" p+p{text-indent:2em;} body {background:#cccccc none}" +
 		" img{display:block; max-width: 32em; padding:1em; margin:auto;}" +
 		" h1,h2,h3,h4 {font-weight:normal}</style>" +
 		"<div style=\"width:34em; padding:8em; padding-top:2em;" +

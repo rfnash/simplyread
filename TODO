@@ -1,7 +1,3 @@
-core:
-	consider counting <br />\s<br \> as a <p> as least some blogspot pages need it
-		http://davidz25.blogspot.com/2011/06/writing-c-library-part-1.html
-
 chromium:
 	generate appid for use in update xml
 		see GenerateId in extension.cc of chrome for how it works
