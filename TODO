@@ -1,3 +1,15 @@
+before 1.0!
+	consider license change to isc
+	consider renaming to PlanedText
+
+core:
+	disable all other scripts - lots of tracking horrors around now, e.g.
+	h-online and nytimes have things which report back every time you click the mouse.
+
+make:
+	use 'convert -Background none' rather than rsvg (check the output is still good)
+	gzip things in web/
+
 chromium:
 	generate appid for use in update xml
 		see GenerateId in extension.cc of chrome for how it works
