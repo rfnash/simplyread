@@ -11,6 +11,8 @@ make:
 	gzip things in web/
 
 chromium:
+	look at content_security_policy to tighten extension manifest lots
+		http://code.google.com/chrome/extensions/trunk/manifest.html#content_security_policy
 	generate appid for use in update xml
 		see GenerateId in extension.cc of chrome for how it works
 
