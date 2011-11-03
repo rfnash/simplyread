@@ -8,7 +8,7 @@
 	em:targetApplication [
 		em:id "{ec8030f7-c20a-464f-9b0e-13a3a9e97384}";
 		em:minVersion "3.0";
-		em:maxVersion "7.*"
+		em:maxVersion "9.*"
 	] ;
 	em:name "SimplyRead";
 	em:description "Removes distractions from webpages. Press Ctrl-Alt-r or press the 'sr' button in the addons bar to toggle SimplyRead.";
