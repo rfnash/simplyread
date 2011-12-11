@@ -1,3 +1,7 @@
+before 0.8
+	chrome keybind
+	firefox xul options as on chromium
+
 before 1.0!
 	consider license change to isc
 	consider renaming to PlanedText
