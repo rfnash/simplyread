@@ -2,6 +2,7 @@
 	"name": "SimplyRead",
 	"version": "VERSION",
 	"background_page": "background.html",
+	"options_page": "options.html",
 	"permissions": [ "tabs", "<all_urls>" ],
 	"content_scripts": [{"matches": ["<all_urls>"], "js": ["simplyread.js", "keybind.js", "viable.js"]}],
 	"page_action": { "default_icon": "icon.png" },

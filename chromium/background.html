@@ -7,6 +7,9 @@
 	chrome.extension.onRequest.addListener(onRequest);
 
 	chrome.pageAction.onClicked.addListener(function(tab) {
-		chrome.tabs.executeScript(tab.id, {code:"simplyread();"});
+		if (!localStorage.prefs)
+			localStorage.prefs = '{"nostyle":false,"nolinks":false}';
+		var prefs = JSON.parse(localStorage.prefs);
+		chrome.tabs.executeScript(tab.id, {code:"simplyread("+prefs.nostyle+","+prefs.nolinks+");"});
 	});
 </script></head></html>

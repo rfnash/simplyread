@@ -97,7 +97,8 @@ crx: $(KEYFILE)
 	rm -rf chromium-build
 	mkdir chromium-build
 	sed 2q < COPYING > chromium-build/COPYING
-	cp simplyread.js keybind.js chromium/background.html chromium-build/
+	cp simplyread.js keybind.js chromium-build/
+	cp chromium/background.html chromium/options.html chromium-build/
 	cat viable.js chromium/viablehook.js > chromium-build/viable.js
 	rsvg -w 19 -h 19 icon.svg chromium-build/icon.png
 	rsvg -w 48 -h 48 icon.svg chromium-build/icon48.png

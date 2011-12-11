@@ -11,9 +11,7 @@ make:
 	gzip things in web/
 
 chromium:
-	apparently doesn't work on new versions!
-	create option to turn off/on hyperlinks
-	create option to turn off/on css
+	change keybind (looks like ctrl-alt-r is now used by chrome, at least on mac)
 	look at content_security_policy to tighten extension manifest lots
 		http://code.google.com/chrome/extensions/trunk/manifest.html#content_security_policy
 	generate appid for use in update xml
