@@ -1,6 +1,6 @@
 /* See COPYING file for copyright, license and warranty details. */
 
-if(window.content && window.content.document.simplyread_original === undefined) window.content.document.simplyread_original = false;
+if(window.content && window.content.document && window.content.document.simplyread_original === undefined) window.content.document.simplyread_original = false;
 
 function simplyread(nostyle, nolinks)
 {
