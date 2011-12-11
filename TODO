@@ -11,12 +11,18 @@ make:
 	gzip things in web/
 
 chromium:
+	apparently doesn't work on new versions!
+	create option to turn off/on hyperlinks
+	create option to turn off/on css
 	look at content_security_policy to tighten extension manifest lots
 		http://code.google.com/chrome/extensions/trunk/manifest.html#content_security_policy
 	generate appid for use in update xml
 		see GenerateId in extension.cc of chrome for how it works
 
 gecko:
+	create option to turn off/on hyperlinks
+	create option to turn off/on css
+	use straight rdf/xml to remove rapper build dependency
 	use rapper and bourne shell script to sign
 		this is difficult as mozilla wants the signature of a very particular serialisation of the update rdf
 		https://developer.mozilla.org/en/Extension_Versioning,_Update_and_Compatibility#Update_RDF_Format
