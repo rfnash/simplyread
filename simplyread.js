@@ -2,7 +2,7 @@
 
 if(window.content && window.content.document.simplyread_original === undefined) window.content.document.simplyread_original = false;
 
-function simplyread()
+function simplyread(nostyle, nolinks)
 {
 	/* count the number of <p> tags that are direct children of parenttag */
 	function count_p(parenttag)
@@ -53,25 +53,28 @@ function simplyread()
 	fresh.innerHTML = biggest_tag.innerHTML;
 	fresh.innerHTML = fresh.innerHTML.replace(/<\/?font[^>]*>/g, "");
 	fresh.innerHTML = fresh.innerHTML.replace(/style="[^"]*"/g, "");
-	fresh.innerHTML = fresh.innerHTML.replace(/<\/?a[^>]*>/g, "");
+	if(nolinks)
+		fresh.innerHTML = fresh.innerHTML.replace(/<\/?a[^>]*>/g, "");
 	fresh.innerHTML = fresh.innerHTML.replace(/<\/?span[^>]*>/g, "");
-	fresh.innerHTML = fresh.innerHTML.replace(/<style[^>]*>/g, "<style media=\"aural\">");
+	fresh.innerHTML = fresh.innerHTML.replace(/<style[^>]*>/g, "<style media=\"aural\">"); /* ensures contents of style tag are ignored */
 	
 	for (var i = 0; i < doc.styleSheets.length; i++)
 		doc.styleSheets[i].disabled = true;
 	
+	srstyle =
+		"p{margin:0ex auto;} h1,h2,h3,h4{font-weight:normal}" +
+		"p+p{text-indent:2em;} body{background:#cccccc none}" +
+		"img{display:block; max-width: 32em; padding:1em; margin: auto}" +
+		"h1{text-align:center;text-transform:uppercase}" +
+		"div#sr{width:34em; padding:8em; padding-top:2em;" +
+		"  background-color:white; margin:auto; line-height:1.4;" +
+		"  text-align:justify; font-family:serif; hyphens:auto;}";
+		/* text-rendering:optimizeLegibility; - someday this will work,
+		 *   but at present it just ruins justify, so is disabled */
+	
 	doc.body.innerHTML =
-		"<style type=\"text/css\"> p{margin:0ex auto;}" +
-		" p+p{text-indent:2em;} body {background:#cccccc none}" +
-		" img{display:block; max-width: 32em; padding:1em; margin:auto;}" +
-		" h1,h2,h3,h4 {font-weight:normal}</style>" +
-		"<div style=\"width:34em; padding:8em; padding-top:2em;" +
-		" background-color:white; margin:auto; line-height:1.4;" +
-		" text-align:justify; font-family:serif;" +
-		" text-rendering:optimizeLegibility; hyphens:auto;\">" +
-		"<h1 style=\"text-align:center;text-transform:uppercase\">"+doc.title+"</h1>" +
-		"<hr style=\"width:6em; margin-top:2ex auto;\"/>" +
-		fresh.innerHTML + "</div>";
-
+		"<style type=\"text/css\">" + (nostyle ? "" : srstyle) + "</style>" +
+		"<div id=\"sr\">" + "<h1>"+doc.title+"</h1>" + fresh.innerHTML + "</div>";
+	
 	return 0;
 }
