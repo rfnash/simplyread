@@ -22,7 +22,7 @@ chromium:
 		see GenerateId in extension.cc of chrome for how it works
 
 gecko:
-	create option to turn off/on hyperlinks
+	create option to turn off/on hyperlinks https://developer.mozilla.org/en/Adding_preferences_to_an_extension
 	create option to turn off/on css
 	use straight rdf/xml to remove rapper build dependency
 	use rapper and bourne shell script to sign
