@@ -79,10 +79,12 @@ dist:
 
 xpi: $(KEYFILE)
 	rm -rf $(NAME)-$(VERSION).xpi gecko-build
-	mkdir -p gecko-build/chrome/content
+	mkdir -p gecko-build/chrome/content gecko-build/defaults/preferences
 	sed 2q < COPYING > gecko-build/COPYING
-	cp gecko/chrome.manifest gecko-build/
+	cp gecko/chrome.manifest gecko/options.xul gecko-build/
 	cp gecko/chrome/content/simplyread.xul gecko-build/chrome/content/
+	cp gecko/defaults/preferences/prefs.js gecko-build/defaults/preferences/
+	patch < gecko/js.patch > /dev/null
 	cp simplyread.js gecko-build/chrome/content/
 	cat viable.js gecko/viablehook.js > gecko-build/chrome/content/viable.js
 	rsvg -w 22 -h 22 icon.svg gecko-build/chrome/content/icon.png
@@ -91,6 +93,7 @@ xpi: $(KEYFILE)
 		< gecko/install.ttl | rapper -i turtle -o rdfxml /dev/stdin 2>/dev/null > gecko-build/install.rdf
 	cd gecko-build; zip -r ../$(NAME)-$(VERSION).xpi . 1>/dev/null
 	rm -rf gecko-build
+	patch -R < gecko/js.patch > /dev/null
 	echo $(NAME)-$(VERSION).xpi
 
 crx: $(KEYFILE)

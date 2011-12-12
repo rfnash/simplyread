@@ -1,0 +1,15 @@
+--- simplyread.js	2011-12-12 14:13:05.017459673 +0000
++++ simplyread.js.geckogross	2011-12-12 14:12:55.557462101 +0000
+@@ -4,6 +4,12 @@ if(window.content && window.content.docu
+ 
+ function simplyread(nostyle, nolinks)
+ {
++	var prefs = Components.classes["@mozilla.org/preferences-service;1"]
++	            .getService(Components.interfaces.nsIPrefService);
++	prefs = prefs.getBranch("extensions.simplyread.");
++	nostyle = prefs.getBoolPref("nostyle");
++	nolinks = prefs.getBoolPref("nolinks");
++
+ 	/* count the number of <p> tags that are direct children of parenttag */
+ 	function count_p(parenttag)
+ 	{
