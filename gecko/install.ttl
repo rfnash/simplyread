@@ -11,7 +11,7 @@
 		em:maxVersion "10.*"
 	] ;
 	em:name "SimplyRead";
-	em:description "Removes distractions from webpages. Press Ctrl-Alt-r or press the 'sr' button in the addons bar to toggle SimplyRead.";
+	em:description "Removes distractions from webpages. Press Alt+r or press the 'sr' button in the addons bar to toggle SimplyRead.";
 	em:creator "Nick White";
 	em:homepageURL "WEBSITE/";
 	em:updateURL "WEBSITE/gecko-updates.rdf";

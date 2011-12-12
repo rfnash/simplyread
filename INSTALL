@@ -21,7 +21,7 @@ rsvg) by running:
 
 # Surf
 
-To use SimplyRead from surf, and trigger it from ctrl-alt-r, add the
+To use SimplyRead from surf, and trigger it from alt+r, add the
 contents of keybind.js and simplyread.js to script.js:
 
 	cat keybind.js simplyread.js >> $HOME/.surf/script.js

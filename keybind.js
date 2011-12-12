@@ -5,6 +5,6 @@
 })();
 
 function keybind(e) {
-	if(e.ctrlKey && e.altKey && String.fromCharCode(e.keyCode) == "R")
+	if(e.altKey && String.fromCharCode(e.keyCode) == "R")
 		simplyread();
 }

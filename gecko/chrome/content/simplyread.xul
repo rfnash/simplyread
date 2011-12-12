@@ -3,7 +3,7 @@
 	<script src="chrome://simplyread/content/viable.js" />
 	<script src="chrome://simplyread/content/simplyread.js" />
 	<keyset>
-		<key id="simplyread" modifiers="control alt" key="r" oncommand="simplyread()" />
+		<key id="simplyread" modifiers="alt" key="r" oncommand="simplyread()" />
 	</keyset>
 	<toolbar id="addon-bar">
 		<toolbarbutton id="simplyread-btn" image="chrome://simplyread/content/icon.png" label="SimplyRead" oncommand="simplyread()" />
