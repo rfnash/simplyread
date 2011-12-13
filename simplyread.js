@@ -48,6 +48,9 @@ function simplyread(nostyle, nolinks)
 	
 	if (biggest_num == 0) return 1;
 	
+	if (biggest_tag.childNodes[1].tagName != "H1")
+		biggest_tag.innerHTML = "<h1>"+doc.title+"</h1>"+biggest_tag.innerHTML;
+	
 	/* save and sanitise content of chosen tag */
 	var fresh = doc.createElement("div");
 	fresh.innerHTML = biggest_tag.innerHTML;
@@ -74,7 +77,6 @@ function simplyread(nostyle, nolinks)
 	
 	doc.body.innerHTML =
 		"<style type=\"text/css\">" + (nostyle ? "" : srstyle) + "</style>" +
-		"<div id=\"sr\">" + "<h1>"+doc.title+"</h1>" + fresh.innerHTML + "</div>";
-	
+		"<div id=\"sr\">" + fresh.innerHTML + "</div>";
 	return 0;
 }

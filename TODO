@@ -1,9 +1,9 @@
-before 0.8
-	firefox xul options as on chromium
-
 before 1.0!
 	consider license change to isc
 	consider renaming to PlanedText
+
+web:
+	websummary should show git clone - bug
 
 core:
 	disable all other scripts - lots of tracking horrors around now, e.g.
