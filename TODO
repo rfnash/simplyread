@@ -1,16 +1,19 @@
+looks like chromium sees a syntax error that isn't there in options.html. must be a weird encoding thing. this results in sometimes failure with setting options.
+
+
 before 1.0!
 	consider license change to isc
-	consider renaming to PlanedText
 
 web:
 	websummary should show git clone - bug
+	everything should be gzipped
 
 core:
 	disable all other scripts - lots of tracking horrors around now, e.g.
 	h-online and nytimes have things which report back every time you click the mouse.
+	have left and right padding shrink if in small window
 
 make:
-	use 'convert -Background none' rather than rsvg (check the output is still good)
 	gzip things in web/
 
 chromium:

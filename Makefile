@@ -29,6 +29,7 @@ sign:
 		echo $(NAME)-$(VERSION).tar.crx.sig; fi
 
 # TODO: test makefile dependency is portable (and correct)
+# requires uhura
 web/gecko-updates.rdf: $(NAME)-$(VERSION).xpi $(KEYFILE)
 	uhura -o $@ -k $(KEYFILE) $(NAME)-$(VERSION).xpi $(WEBSITE)/$(NAME)-$(VERSION).xpi
 
@@ -49,6 +50,7 @@ web/doap.ttl: web/doap-src.ttl
 	    -e "s|AUTHORHOME|$(AUTHORHOME)|g" -e "s|WEBSITE|$(WEBSITE)|g" \
 	    -e "s|REPOURL|$(REPOURL)|g" < $< > $@
 
+# requires librdf
 web/index.html: web/doap.ttl README
 	echo making webpage
 	echo "<!DOCTYPE html><html><head><title>$(UPNAME)</title>" > $@
@@ -77,6 +79,7 @@ dist:
 	rm -rf $(NAME)-$(VERSION)
 	echo $(NAME)-$(VERSION).tar.bz2
 
+# requires rsvg, librdf
 xpi: $(KEYFILE)
 	rm -rf $(NAME)-$(VERSION).xpi gecko-build
 	mkdir -p gecko-build/chrome/content gecko-build/defaults/preferences
@@ -96,6 +99,7 @@ xpi: $(KEYFILE)
 	patch -R < gecko/js.patch > /dev/null
 	echo $(NAME)-$(VERSION).xpi
 
+# requires rsvg
 crx: $(KEYFILE)
 	rm -rf chromium-build
 	mkdir chromium-build
