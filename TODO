@@ -1,3 +1,5 @@
+add to documentation that it doesn't make any network calls at all, unlike similars, preserving privacy, increasing speed, and allowing offline usage
+
 looks like chromium sees a syntax error that isn't there in options.html. must be a weird encoding thing. this results in sometimes failure with setting options.
 
 
@@ -23,7 +25,6 @@ chromium:
 		see GenerateId in extension.cc of chrome for how it works
 
 gecko:
-	use straight rdf/xml to remove rapper build dependency
 	use rapper and bourne shell script to sign
 		this is difficult as mozilla wants the signature of a very particular serialisation of the update rdf
 		https://developer.mozilla.org/en/Extension_Versioning,_Update_and_Compatibility#Update_RDF_Format

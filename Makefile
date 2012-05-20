@@ -79,7 +79,7 @@ dist:
 	rm -rf $(NAME)-$(VERSION)
 	echo $(NAME)-$(VERSION).tar.bz2
 
-# requires rsvg, librdf
+# requires rsvg
 xpi: $(KEYFILE)
 	rm -rf $(NAME)-$(VERSION).xpi gecko-build
 	mkdir -p gecko-build/chrome/content gecko-build/defaults/preferences
@@ -93,7 +93,7 @@ xpi: $(KEYFILE)
 	rsvg -w 22 -h 22 icon.svg gecko-build/chrome/content/icon.png
 	rsvg -w 64 -h 64 icon.svg gecko-build/icon.png
 	sed -e "s/VERSION/$(VERSION)/g" -e "s|WEBSITE|$(WEBSITE)|g" -e "s|GECKOID|$(GECKOID)|g" -e "s/PUBKEY/`sh gecko/genpub.sh $(KEYFILE)`/g" \
-		< gecko/install.ttl | rapper -i turtle -o rdfxml /dev/stdin 2>/dev/null > gecko-build/install.rdf
+		< gecko/install.rdf > gecko-build/install.rdf
 	cd gecko-build; zip -r ../$(NAME)-$(VERSION).xpi . 1>/dev/null
 	rm -rf gecko-build
 	patch -R < gecko/js.patch > /dev/null
