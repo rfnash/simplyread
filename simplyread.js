@@ -69,7 +69,7 @@ function simplyread(nostyle, nolinks)
 		"p+p{text-indent:2em;} body{background:#cccccc none}" +
 		"img{display:block; max-width: 16em; padding:1em; margin: auto}" +
 		"h1{text-align:center;text-transform:uppercase}" +
-		"div#sr{width:24em; padding:1em 4em 50% 4em;" +
+		"div#sr{width:24em; padding:1em 4em 50%;" +
 		"  background-color:white; margin:auto; line-height:1.4;" +
 		"  text-align:justify; font-family:serif; hyphens:auto;" +
                 "  font-size: 2em}";
