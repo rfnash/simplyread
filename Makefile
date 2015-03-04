@@ -3,12 +3,12 @@ UPNAME = SimplyRead
 VERSION = 0.8
 KEYFILE = private.pem
 
-WEBSITE = http://njw.me.uk/software/$(NAME)
-REPOURL = http://git.njw.me.uk/$(NAME).git
-AUTHORFOAF = http://njw.me.uk/card#i
+WEBSITE = https://njw.name/$(NAME)
+REPOURL = https://git.njw.name/$(NAME).git
+AUTHORFOAF = https://njw.name/card#i
 AUTHORNAME = Nick White
-AUTHORHOME = http://njw.me.uk
-GECKOID = simplyread@njw.me.uk
+AUTHORHOME = https://njw.name
+GECKOID = simplyread@njw.name
 
 all: xpi crx
 
